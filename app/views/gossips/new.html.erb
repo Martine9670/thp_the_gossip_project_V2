@@ -1,0 +1,20 @@
+<h2>Créer un nouveau potin</h2>
+
+<%= form_with model: @gossip, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :title, "Titre" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :content, "Contenu" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :user_id, "Auteur (ID)" %>
+    <%= f.number_field :user_id, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Créer", class: "btn btn-success" %>
+<% end %>

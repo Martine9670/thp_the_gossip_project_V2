@@ -1,0 +1,50 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On macOS with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem "pg"
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: qwerty123
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: the_gossip_project_v2_development
+
+test:
+  <<: *default
+  database: the_gossip_project_v2_test
+
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: the_gossip_project_v2_production
+    username: the_gossip_project_v2
+    password: <%= ENV["THE_GOSSIP_PROJECT_V2_DATABASE_PASSWORD"] %>
+  cache:
+    <<: *primary_production
+    database: the_gossip_project_v2_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: the_gossip_project_v2_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: the_gossip_project_v2_production_cable
+    migrations_paths: db/cable_migrate
