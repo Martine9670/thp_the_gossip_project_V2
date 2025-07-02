@@ -1,9 +1,15 @@
 class Gossip < ApplicationRecord
   # Chaque gossip appartient à un utilisateur (auteur)
   belongs_to :user
+  # Association Many-to-Many entre ce modèle et le modèle Tag
+  # Cela signifie qu’un enregistrement peut avoir plusieurs tags,
+  # et qu’un tag peut être lié à plusieurs enregistrements de ce modèle.
   has_and_belongs_to_many :tags
 
+  # Validation pour s’assurer que le champ title est présent (non vide)
   validates :title, presence: true
+
+  # Validation pour s’assurer que le champ content est présent (non vide)
   validates :content, presence: true
 
   # Un gossip peut avoir plusieurs enregistrements dans la table de liaison gossip_tags

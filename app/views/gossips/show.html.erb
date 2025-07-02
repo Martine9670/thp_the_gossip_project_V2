@@ -10,3 +10,25 @@
 <p><em>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
 
 <%= link_to "Retour à l'accueil", root_path %>
+
+
+
+<!--
+EXPLICATIONS :
+
+1. <%= @gossip.title %>
+   - Affiche le titre du potin courant (@gossip).
+
+2. <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
+   - Crée un lien avec le prénom de l’auteur du potin.
+   - Le lien mène vers la page de cet utilisateur.
+
+3. <%= @gossip.content %>
+   - Affiche le contenu du potin.
+
+4. <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %>
+   - Affiche la date et l’heure de création formatée en "jour/mois/année à heure:minute".
+
+5. <%= link_to "Retour à l'accueil", root_path %>
+   - Lien pour revenir à la page d’accueil du site.
+-->

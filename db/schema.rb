@@ -1,15 +1,3 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema[8.0].define(version: 2025_06_24_132437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
@@ -105,3 +93,57 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_24_132437) do
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "users", "cities"
 end
+
+
+
+=begin
+EXPLICATIONS :
+
+GENERAL :
+- Le fichier définit la structure actuelle de la base de données (générée automatiquement par Rails).
+- Chaque `create_table` correspond à une table.
+- `t.*` décrit les colonnes : type + nom.
+- `t.index` crée des index pour optimiser les requêtes.
+- `add_foreign_key` définit les liens entre les tables (clés étrangères).
+
+TABLES CLÉS :
+
+1. cities :
+   - Contient les villes.
+   - Champs : name, zip_code, timestamps.
+
+2. users :
+   - Représente les utilisateurs.
+   - Lié à une ville via city_id (clé étrangère).
+   - Infos personnelles + timestamps.
+
+3. gossips :
+   - Les potins.
+   - Liés à un user (auteur).
+   - Champs : title, content.
+
+4. comments :
+   - Commentaires sur les potins.
+   - Liés à un gossip et un user.
+
+5. tags :
+   - Étiquettes pour classer les potins.
+
+6. gossip_tags :
+   - Table de liaison Many-to-Many entre gossips et tags.
+
+7. messages :
+   - Messages privés envoyés par les utilisateurs.
+   - Liés à sender_id (l’expéditeur).
+
+8. message_recipients :
+   - Table de liaison entre messages et destinataires (users).
+
+9. likes :
+   - Système de likes polymorphe (peut liker des potins ou des commentaires).
+   - likeable_type & likeable_id gèrent le polymorphisme.
+
+EXTENSIONS :
+- enable_extension "pg_catalog.plpgsql" : active des fonctionnalités spécifiques de PostgreSQL.
+
+=end

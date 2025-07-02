@@ -18,3 +18,36 @@
 
   <%= f.submit "Créer", class: "btn btn-success" %>
 <% end %>
+
+
+<!--
+EXPLICATIONS :
+
+1. form_with model: @gossip, local: true
+   - Crée un formulaire lié à l'objet @gossip.
+   - local: true désactive l'envoi AJAX, le formulaire utilise une requête HTTP normale.
+
+2. f.label :title, "Titre"
+   - Génère une étiquette pour le champ "title" avec le texte "Titre".
+
+3. f.text_field :title, class: "form-control"
+   - Champ texte simple pour saisir le titre, stylé avec Bootstrap.
+
+4. f.label :content, "Contenu"
+   - Étiquette pour le champ "content" avec le texte "Contenu".
+
+5. f.text_area :content, class: "form-control"
+   - Zone de texte plus grande pour saisir le contenu, stylée avec Bootstrap.
+
+6. f.label :user_id, "Auteur"
+   - Étiquette pour le champ "user_id" avec le texte "Auteur".
+
+7. f.collection_select :user_id, User.all, :id, :first_name, class: "form-select"
+   - Menu déroulant qui liste tous les utilisateurs.
+   - La valeur enregistrée est l'id de l'utilisateur.
+   - Le texte affiché dans la liste est le prénom (first_name).
+   - Stylé avec la classe Bootstrap "form-select".
+
+8. f.submit "Créer", class: "btn btn-success"
+   - Bouton pour soumettre le formulaire, avec style Bootstrap vert.
+-->
