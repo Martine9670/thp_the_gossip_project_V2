@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
   # Action pour la page "welcome" (accueil personnalisé)
   def welcome
     # Récupère la valeur du paramètre :first_name passé dans l'URL pour l'utiliser dans la vue
-    @first_name = params[:first_name]
+    @first_name = params[:first_name] || "Invite"
   end
 
 end

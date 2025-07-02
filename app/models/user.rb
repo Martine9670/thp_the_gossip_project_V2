@@ -21,4 +21,6 @@ class User < ApplicationRecord
 
   # Un utilisateur peut avoir plusieurs likes (sur potins, commentaires, etc.)
   has_many :likes
+
+  has_secure_password
 end

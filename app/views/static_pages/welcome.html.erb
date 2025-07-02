@@ -1,2 +1,19 @@
 <h2>BIENVENUE <%= @first_name.capitalize %> !</h2>
 <p>Ici c'est notre super site de potins, il est chouette, non ?</p>
+
+<form id="first-name-form">
+  <label for="first_name">Entre ton prénom :</label>
+  <input type="text" id="first_name" name="first_name" required>
+  <button type="submit">Go</button>
+</form>
+
+<script>
+  document.getElementById('first-name-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const firstName = document.getElementById('first_name').value.trim();
+    if (firstName) {
+      // Redirige vers /welcome/prénom
+      window.location.href = '/welcome/' + encodeURIComponent(firstName);
+    }
+  });
+</script>

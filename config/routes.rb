@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   # Exemple : /welcome/Julie => static_pages#welcome avec params[:first_name] = "Julie"
   # La route est nommée : 'welcome' (utilisable via welcome_path("Julie"))
   get 'welcome/:first_name', to: 'static_pages#welcome', as: 'welcome'
+
+  get 'welcome', to: 'static_pages#welcome'
 end
 
