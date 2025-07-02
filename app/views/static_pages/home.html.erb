@@ -1,5 +1,3 @@
-
-
 <div class="mb-4 d-flex gap-2">
   <%= link_to "Nouveau Potin", new_gossip_path, class: "btn btn-info" %>
   <%= link_to "Voir tous les utilisateurs", users_path, class: "btn btn-info" %>
@@ -20,7 +18,7 @@
               <strong>Auteur :</strong>
               <%= link_to gossip.user.first_name, user_path(gossip.user), class: 'text-decoration-none' %>
             </p>
-            <%= link_to "Voir le potin", gossip_path(gossip), class: "btn btn-warning" %>
+            <%= link_to "Voir le potin", gossip_path(gossip), class: "btn btn-outline-danger" %>
           </div>
         </div>
       </div>
