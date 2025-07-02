@@ -21,7 +21,7 @@
           crossorigin="anonymous">
 
     <!-- Ton CSS personnalisé (chargé après Bootstrap pour pouvoir surcharger les styles si besoin) -->
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
@@ -42,10 +42,5 @@
     <main class="container">
       <%= yield %>
     </main>
-
-    <!-- Bootstrap JS Bundle via CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoYp2IHdh1nA2wJvF5sA2h5D5yY7eFq5cwWvR5P6ibB8z8a" 
-            crossorigin="anonymous"></script>
   </body>
 </html>
