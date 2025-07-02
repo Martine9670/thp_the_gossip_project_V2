@@ -1,19 +1,15 @@
 body {
-  background-color: beige;
+  background-color: #f5f5f5;
 }
 
-header nav a:hover {
-  text-decoration: underline;
+.btn-info {
+  background-color: #f78fb3; /* rose clair */
+  color: white;
+  border: none;
 }
 
-.btn-pink {
-  background-color: #f78fb3 !important; /* rose clair */
-  color: white !important;
-  border: none !important;
-}
-
-.btn-pink:hover {
-  background-color: #e85aa2 !important; /* rose un peu plus foncé */
-  color: white !important;
+.btn-info:hover {
+  background-color: #e85aa2; /* rose un peu plus foncé */
+  color: white;
 }
 
