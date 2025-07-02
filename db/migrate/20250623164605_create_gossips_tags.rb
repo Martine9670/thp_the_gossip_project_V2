@@ -1,4 +1,4 @@
-class CreateGossipTags < ActiveRecord::Migration[8.0]
+class CreateGossipsTags < ActiveRecord::Migration[8.0]
   def change
     create_table :gossip_tags do |t|
       t.references :gossip, null: false, foreign_key: true

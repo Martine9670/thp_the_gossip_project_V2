@@ -34,7 +34,10 @@ end
     # Age aléatoire entre 18 et 65 ans
     age: rand(18..65),
     # Associe l’utilisateur à une ville choisie au hasard parmi toutes les villes créées
-    city: City.all.sample
+    city: City.all.sample,
+    # mot de passe par défaut pour tous les users
+    password: "azerty123",  
+    password_confirmation: "azerty123"
   )
 end
 
@@ -60,10 +63,12 @@ end
 
 # Pour chaque gossip, on va lui associer entre 1 et 3 tags au hasard
 Gossip.all.each do |gossip|
-  # Prend entre 1 et 3 tags choisis aléatoirement dans la base
-  tags = Tag.order("RANDOM()").limit(rand(1..3))
-  # Ajoute ces tags à ce gossip (association many-to-many)
-  gossip.tags << tags
+    # Prend entre 1 et 3 tags choisis aléatoirement dans la base
+    tags = Tag.order("RANDOM()").limit(rand(1..3))
+    # Ajoute ces tags à ce gossip (association many-to-many)
+    tags.each do |tag|
+      GossipTag.create!(gossip: gossip, tag: tag)
+  end
 end
 
 # Créer 10 messages privés
