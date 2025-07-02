@@ -1,7 +1,45 @@
 <h2>Liste des utilisateurs</h2>
 
-<ul>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
   <% @users.each do |user| %>
-    <li><%= link_to user.first_name, user_path(user) %></li>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to user.first_name, user_path(user), class: "stretched-link text-decoration-none" %></h5>
+          <p class="card-text"><%= truncate(user.description, length: 140) %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+
+
+<!--
+EXPLICATIONS :
+
+1. <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+   - Grille responsive Bootstrap : 
+     1 colonne (mobile), 2 colonnes (tablette), 3 colonnes (desktop).
+   - g-4 ajoute un espace entre les colonnes (gutters).
+
+2. @users.each do |user|
+   - Parcourt tous les utilisateurs passés depuis le contrôleur.
+
+3. <div class="col">
+   - Colonne individuelle pour chaque carte utilisateur.
+
+4. <div class="card h-100">
+   - Carte Bootstrap qui s'étire pour faire la même hauteur que les autres (utile pour l'alignement vertical).
+
+5. <div class="card-body">
+   - Contenu de la carte (prénom + description).
+
+6. link_to user.first_name, user_path(user)
+   - Affiche le prénom de l'utilisateur en tant que lien vers sa page perso.
+   - stretched-link : rend toute la carte cliquable.
+   - text-decoration-none : supprime le soulignement du lien.
+
+7. truncate(user.description, length: 140)
+   - Coupe la description après 140 caractères pour ne pas trop allonger la carte.
+-->
