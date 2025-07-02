@@ -11,10 +11,10 @@
     <%= f.text_area :content, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= f.label :user_id, "Auteur (ID)" %>
-    <%= f.number_field :user_id, class: "form-control" %>
-  </div>
+<div class="mb-3">
+  <%= f.label :user_id, "Auteur" %>
+  <%= f.collection_select :user_id, User.all, :id, :first_name, class: "form-select" %>
+</div>
 
   <%= f.submit "Créer", class: "btn btn-success" %>
 <% end %>

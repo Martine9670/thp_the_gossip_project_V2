@@ -1,6 +1,10 @@
 class Gossip < ApplicationRecord
   # Chaque gossip appartient à un utilisateur (auteur)
   belongs_to :user
+  has_and_belongs_to_many :tags
+
+  validates :title, presence: true
+  validates :content, presence: true
 
   # Un gossip peut avoir plusieurs enregistrements dans la table de liaison gossip_tags
   has_many :gossip_tags

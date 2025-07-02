@@ -11,14 +11,16 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new
   end
 
-  def create
-    @gossip = Gossip.new(gossip_params)
-    if @gossip.save
-      redirect_to gossip_path(@gossip), notice: "Potin créé avec succès !"
-    else
-      render :new, status: :unprocessable_entity
-    end
+def create
+  @gossip = Gossip.new(gossip_params)
+  if @gossip.save
+    redirect_to @gossip, notice: "Potin créé avec succès"
+  else
+    @tags = Tag.all
+    puts @gossip.errors.full_messages # ← ajoute ça pour afficher les erreurs en console
+    render :new
   end
+end
 
   private
 
