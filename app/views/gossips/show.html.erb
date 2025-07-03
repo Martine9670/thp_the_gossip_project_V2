@@ -4,10 +4,13 @@
   <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
 </p>
 
-<p><strong>Contenu :</strong></p>
-<p><%= @gossip.content %></p>
-
-<p><em>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
+  <div class="card mb-3">
+    <div class="card-body">
+      <p><strong><u>Contenu</u> :</strong></p>
+      <p><%= @gossip.content %></p>
+      <p class="text-muted"><em>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
+    </div>
+  </div>
 
 <%= link_to "Retour à l'accueil", root_path %>
 
