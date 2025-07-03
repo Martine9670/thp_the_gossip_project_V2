@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # Génère automatiquement toutes les routes REST (index, show, new, create, edit, update, destroy) pour les potins
   resources :gossips
 
+  # Créer un commentaire lié à un gossip
+  resources :gossips do
+    resources :comments, only: [:new, :create]
+  end
+
   # Génère automatiquement toutes les routes REST pour les utilisateurs
   resources :users
 

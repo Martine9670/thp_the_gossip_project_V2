@@ -1,0 +1,14 @@
+<h1>Liste des potins</h1>
+
+<ul>
+  <% @gossips.each do |gossip| %>
+    <li>
+      <strong><%= link_to gossip.title, gossip_path(gossip) %></strong>
+      - par <%= gossip.user.first_name if gossip.user %>
+      | <%= link_to "Ajouter un commentaire", new_gossip_comment_path(gossip) %>
+      |
+      <%= link_to "Supprimer", gossip_path(gossip), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+

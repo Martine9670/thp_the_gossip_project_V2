@@ -1,0 +1,12 @@
+<h1>Ajouter un commentaire</h1>
+
+<%= form_with(model: [@gossip, @comment]) do |form| %>
+  <div>
+    <%= form.label :content, "Votre commentaire :" %><br>
+    <%= form.text_area :content, rows: 4, cols: 50 %>
+  </div>
+
+  <div>
+    <%= form.submit "Publier" %>
+  </div>
+<% end %>

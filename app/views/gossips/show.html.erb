@@ -11,6 +11,37 @@
 
 <%= link_to "Retour à l'accueil", root_path %>
 
+<hr>
+<h3>Commentaires :</h3>
+
+<% if @gossip.comments.any? %>
+  <% @gossip.comments.each do |comment| %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <p><%= comment.content %></p>
+      <small>
+        Posté par <%= comment.user.first_name if comment.user %>
+        le <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %>
+      </small>
+    </div>
+  <% end %>
+<% else %>
+  <p>Aucun commentaire pour l'instant.</p>
+<% end %>
+
+<hr>
+<h3>Ajouter un commentaire</h3>
+
+<%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
+  <div>
+    <%= form.text_area :content, placeholder: "Votre commentaire ici...", rows: 3 %>
+  </div>
+  <div>
+    <%= form.submit "Envoyer", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+
 
 
 <!--

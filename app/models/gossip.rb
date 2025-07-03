@@ -16,7 +16,7 @@ class Gossip < ApplicationRecord
 
   # Un gossip peut avoir plusieurs commentaires
   # ATTENTION : ici il faut mettre le pluriel 'comments' pour que Rails comprenne bien la relation
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # Un gossip peut avoir plusieurs likes grâce à la relation polymorphe
   # 'as: :likeable' indique que le gossip est un modèle "likable" dans la relation polymorphe

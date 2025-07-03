@@ -20,6 +20,18 @@ class GossipsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to root_path, notice: "Potin supprimé avec succès !"
+  end
+
   private
 
   def gossip_params

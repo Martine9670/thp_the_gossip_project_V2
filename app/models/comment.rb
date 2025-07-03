@@ -8,5 +8,7 @@ class Comment < ApplicationRecord
   # Un commentaire peut avoir plusieurs likes grâce à la relation polymorphe
   # 'as: :likeable' signifie que ce modèle peut être "liké"
   has_many :likes, as: :likeable
+
+  validates :content, presence: true
 end
 
