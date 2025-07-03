@@ -19,7 +19,10 @@ body {
 
 p1 {
   color: rgb(110, 90, 226);
+}
 
+header {
+  color: rgb(241, 8, 210);
 }
 
 header nav a {
@@ -30,5 +33,4 @@ header nav a {
 
 header nav a:hover {
   text-decoration: underline;
-
 }
