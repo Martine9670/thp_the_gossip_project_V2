@@ -1,0 +1,12 @@
+<h2>Modifier un commentaire</h2>
+
+<%= form_with(model: [@gossip, @comment], local: true) do |form| %>
+  <div>
+    <%= form.text_area :content, rows: 5 %>
+  </div>
+  <div>
+    <%= form.submit "Mettre à jour", class: "btn btn-warning" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour au potin", gossip_path(@gossip) %>

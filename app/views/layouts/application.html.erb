@@ -22,6 +22,8 @@
 
     <!-- Ton CSS personnalisé (chargé après Bootstrap pour pouvoir surcharger les styles si besoin) -->
       <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
+      <%= javascript_importmap_tags %>
+  </head>
 
   <body class="d-flex flex-column min-vh-100">
     <header class="bg-dark p-3 mb-4">
@@ -35,8 +37,17 @@
       </nav>
     </header>
 
-    <main class="container flex-grow-1">
-      <%= yield %>
+<main class="container flex-grow-1">
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</main>
+ 
     </main>
 
     <footer class="bg-secondary text-light py-3 mt-auto">

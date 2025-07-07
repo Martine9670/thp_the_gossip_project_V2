@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Créer un commentaire lié à un gossip
   resources :gossips do
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # Génère automatiquement toutes les routes REST pour les utilisateurs
