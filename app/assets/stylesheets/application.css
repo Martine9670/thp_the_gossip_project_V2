@@ -1,5 +1,5 @@
 body {
-  background-color: #f8f6f6;
+  background-color: white;
 }
 
 .btn-info {
@@ -14,7 +14,7 @@ body {
 }
 
 .card {
-  background-color: #f8d3e6;
+  background-color: #f8bbdb;
 }
 
 p1 {
@@ -35,4 +35,12 @@ header nav a:hover {
   text-decoration: underline;
 }
 
+.purple {
+  background-color: rgb(202, 40, 202);
+  color: white;
+}
 
+.purple:hover {
+    background-color: rgb(146, 3, 146);
+    color: white;
+}

@@ -27,33 +27,31 @@
 
 <% if logged_in? %>
   <% if current_user.liked?(@gossip) %>
-    <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger" %>
+    <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger btn-sm" %>
   <% else %>
-    <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary" %>
+    <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary btn-sm" %>
   <% end %>
 <% else %>
   <p><%= link_to "Connectez-vous pour liker", login_path %></p>
 <% end %>
 
-
+<hr>
     <div class="d-flex gap-2">
-      <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-warning" %>
+      <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn purple btn-sm" %>
       <%= button_to "Supprimer ce potin", gossip_path(@gossip), 
                     method: :delete, 
                     data: { turbo_confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, 
-                    class: "btn btn-danger" %>
+                    class: "btn btn-danger btn-sm" %>
       <hr>
       <p1>
         <strong>Commentaires :</strong> 
         <span class="badge bg-primary"><%= @gossip.comments.count %></span>
       </p1>
-
     </div>
   </div>
 </div>
 
   <%= link_to "Retour à l'accueil", root_path %>
-
 
 <hr>
 <h3>Commentaires :</h3>
@@ -63,10 +61,10 @@
   <div style="border: 1px solid red; padding: 10px; margin-bottom: 10px;">
     <p><strong>Contenu :</strong> <%= comment.content %></p>
     <p><strong>créé le :</strong> <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
-
-  <div>
-    <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn btn-warning" %>
-    <%= button_to "Supprimer", gossip_comment_path(@gossip, comment), method: :delete, data: { "turbo-confirm": "Supprimer ce commentaire ?" }, class: "btn btn-outline-danger btn-sm" %>
+<hr>
+  <div class="d-flex gap-2">
+    <%= link_to "Modifier votre commentaire", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
+    <%= button_to "Supprimer votre commentaire", gossip_comment_path(@gossip, comment), method: :delete, data: { "turbo-confirm": "Supprimer ce commentaire ?" }, class: "btn btn-outline-danger btn-sm" %>
   </div>
   </div>
 <% end %>
@@ -84,7 +82,7 @@
   <div>
     <%= form.submit "Envoyer", class: "btn btn-primary" %>
     </div>
-
+    <br>
 <% end %>
 
 
