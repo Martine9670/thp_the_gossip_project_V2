@@ -60,6 +60,12 @@ end
         title: Faker::Lorem.unique.word
     )
 end
+# Crée des tags spécifiques s'ils n'existent pas déjà
+  tags = ["Amour", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]
+
+  tags.each do |title|
+    Tag.find_or_create_by(title: title)
+  end
 
 # Pour chaque gossip, on va lui associer entre 1 et 3 tags au hasard
 Gossip.all.each do |gossip|
@@ -113,10 +119,5 @@ end
   # Le point d'exclamation (!) signifie qu'une erreur sera levée si la création échoue.
 end
 
-tags = ["Amour", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]
-
-tags.each do |title|
-  Tag.find_or_create_by(title: title)
-end
 
 puts "✅ Seeds terminés : villes, users, gossips, tags, messages privés, commentaires et likes créés."
