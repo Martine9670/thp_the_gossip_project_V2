@@ -8,9 +8,12 @@ delete '/logout', to: 'sessions#destroy'
   # Génère automatiquement toutes les routes REST (index, show, new, create, edit, update, destroy) pour les potins
   resources :gossips
 
-  # Créer un commentaire lié à un gossip
   resources :gossips do
-    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :comments, only: [:new, :create, :edit, :update, :destroy] do
+      resources :likes, only: [:create, :destroy]
+    end
+
+    resources :likes, only: [:create, :destroy]
   end
 
   # Génère automatiquement toutes les routes REST pour les utilisateurs

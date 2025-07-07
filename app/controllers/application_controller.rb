@@ -14,5 +14,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: "Tu dois être connecté pour accéder à cette page."
     end
   end
+
+  alias_method :authenticate_user!, :require_login
 end
+
 

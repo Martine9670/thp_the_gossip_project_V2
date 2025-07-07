@@ -20,7 +20,13 @@ class User < ApplicationRecord
   has_many :comments
 
   # Un utilisateur peut avoir plusieurs likes (sur potins, commentaires, etc.)
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_gossips, through: :likes, source: :gossip
 
   has_secure_password
+
+   # Vérifie si l'utilisateur a liké un objet donné (gossip ou comment)
+  def liked?(likeable)
+    likes.exists?(likeable: likeable)
+  end
 end

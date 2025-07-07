@@ -20,7 +20,24 @@
 
 <div class="card mb-3">
   <div class="card-body ps-3">
-    <p><strong><u>Contenu</u> :</strong></p>
+<p><strong><u>Contenu</u> :</strong></p>
+<p><%= @gossip.content %></p>
+
+<p>
+  <strong>Likes :</strong> <%= @gossip.likes.count %>
+</p>
+
+<% if logged_in? %>
+  <% if current_user.liked?(@gossip) %>
+    <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger" %>
+  <% else %>
+    <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "Connectez-vous pour liker", login_path %></p>
+<% end %>
+
+
     <p><%= @gossip.content %></p>
     <p class="text-muted"><em>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
 
@@ -72,7 +89,6 @@
   <div>
     <%= form.submit "Envoyer", class: "btn btn-primary" %>
     </div>
-
 
 <% end %>
 

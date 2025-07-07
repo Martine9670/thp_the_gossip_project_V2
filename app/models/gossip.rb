@@ -1,4 +1,4 @@
-class Gossip < ApplicationRecord
+  class Gossip < ApplicationRecord
   # Chaque gossip appartient à un utilisateur (auteur)
   belongs_to :user
 
@@ -18,8 +18,8 @@ class Gossip < ApplicationRecord
   # ATTENTION : ici il faut mettre le pluriel 'comments' pour que Rails comprenne bien la relation
   has_many :comments, dependent: :destroy
 
-  # Un gossip peut avoir plusieurs likes grâce à la relation polymorphe
-  # 'as: :likeable' indique que le gossip est un modèle "likable" dans la relation polymorphe
-  has_many :likes, as: :likeable
+# Relations pour les likes polymorphes
+  has_many :likes, as: :likeable, dependent: :destroy
+  has_many :liked_by_users, through: :likes, source: :user
 end
 
