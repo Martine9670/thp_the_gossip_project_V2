@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # Génère automatiquement toutes les routes REST pour les utilisateurs
   resources :users
 
+  resources :cities, only: [:show]
+
+
   # Route système de Rails pour vérifier l’état de santé de l’application (utile pour le déploiement)
   # Accessible via GET /up
   get "up" => "rails/health#show", as: :rails_health_check

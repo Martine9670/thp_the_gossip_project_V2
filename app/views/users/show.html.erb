@@ -3,7 +3,9 @@
   <p><strong>Description :</strong> <%= @user.description %></p>
   <p><strong>Age :</strong> <%= @user.age %></p>
   <p><strong>Email :</strong> <%= @user.email %></p>
-  <p><strong>Ville :</strong> <%= @user.city.name if @user.city %></p>
+  <p><strong>Ville :</strong> 
+    <%= link_to @user.city.name, city_path(@user.city) if @user.city %>
+  </p>
 
   <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-primary" %>
 
@@ -19,3 +21,4 @@
     </div>
   <% end %>
 </div>
+

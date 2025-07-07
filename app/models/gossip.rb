@@ -9,7 +9,7 @@ class Gossip < ApplicationRecord
   validates :content, presence: true
 
   # Un gossip peut avoir plusieurs enregistrements dans la table de liaison gossip_tags
-  has_many :gossip_tags
+  has_many :gossip_tags, dependent: :destroy
 
   # Un gossip peut être associé à plusieurs tags via la table de liaison gossip_tags (relation many-to-many)
   has_many :tags, through: :gossip_tags

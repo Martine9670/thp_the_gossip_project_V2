@@ -1,0 +1,28 @@
+<h1>Modifier le potin</h1>
+
+<%= form_with model: @gossip, local: true do |form| %>
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@gossip.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+  </div>
+<% end %>

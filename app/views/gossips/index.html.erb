@@ -6,8 +6,7 @@
       <strong><%= link_to gossip.title, gossip_path(gossip) %></strong>
       - par <%= gossip.user.first_name if gossip.user %>
 
-      |<%= link_to "Ajouter un commentaire", new_gossip_comment_path(gossip) %>
-      </li>
+        <p1>Nombre de commentaires : <%= gossip.comments.count %></p1>
+    </li>
   <% end %>
 </ul>
-
