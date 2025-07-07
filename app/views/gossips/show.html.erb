@@ -21,7 +21,7 @@
 <% @gossip.comments.each do |comment| %>
   <div style="border: 1px solid red; padding: 10px; margin-bottom: 10px;">
     <p><strong>Contenu :</strong> <%= comment.content %></p>
-    <p><strong>created_at :</strong> <%= comment.created_at.inspect %></p>
+    <p><strong>créé le :</strong> <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
 
   <div>
     <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn btn-warning" %>

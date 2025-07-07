@@ -7,9 +7,7 @@
       - par <%= gossip.user.first_name if gossip.user %>
 
       |<%= link_to "Ajouter un commentaire", new_gossip_comment_path(gossip) %>
-      |
-      <%= link_to "Supprimer", gossip_path(gossip), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
-    </li>
+      </li>
   <% end %>
 </ul>
 
