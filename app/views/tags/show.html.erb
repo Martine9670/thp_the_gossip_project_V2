@@ -1,0 +1,13 @@
+<h2>Potins avec le tag : <%= @tag.title %></h2>
+
+<% if @gossips.any? %>
+  <ul>
+    <% @gossips.each do |gossip| %>
+      <li><%= link_to gossip.title, gossip_path(gossip) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun potin avec ce tag pour l’instant.</p>
+<% end %>
+
+<%= link_to "Retour à l'accueil", root_path, class: "btn btn-secondary mt-3" %>

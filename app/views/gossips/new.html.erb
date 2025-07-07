@@ -16,6 +16,12 @@
   <%= f.collection_select :user_id, User.all, :id, :first_name, class: "form-select" %>
 </div>
 
+  <div>
+    <%= f.label :tag_ids, "Sélectionnez les tags" %><br>
+    <%= f.collection_select :tag_ids, @tags, :id, :title, {}, { multiple: true, size: 5 } %>
+  </div>
+
+
   <%= f.submit "Créer", class: "btn btn-success" %>
 <% end %>
 

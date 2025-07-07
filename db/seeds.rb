@@ -113,4 +113,10 @@ end
   # Le point d'exclamation (!) signifie qu'une erreur sera levée si la création échoue.
 end
 
+tags = ["Amour", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]
+
+tags.each do |title|
+  Tag.find_or_create_by(title: title)
+end
+
 puts "✅ Seeds terminés : villes, users, gossips, tags, messages privés, commentaires et likes créés."

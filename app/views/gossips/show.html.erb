@@ -8,6 +8,16 @@
   <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) if @gossip.user.city %>
 </p>
 
+
+<% if @gossip.tags.any? %>
+  <p><strong>Tags associés :</strong></p>
+  <div class="mb-3">
+    <% @gossip.tags.each do |tag| %>
+      <%= link_to tag.title, tag_path(tag), class: "badge bg-info text-dark me-1 text-decoration-none" %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="card mb-3">
   <div class="card-body ps-3">
     <p><strong><u>Contenu</u> :</strong></p>

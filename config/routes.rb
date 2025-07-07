@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :cities, only: [:show]
 
+  resources :tags, only: [:show]
 
   # Route système de Rails pour vérifier l’état de santé de l’application (utile pour le déploiement)
   # Accessible via GET /up

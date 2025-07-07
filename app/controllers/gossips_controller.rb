@@ -9,6 +9,7 @@ class GossipsController < ApplicationController
 
   def new
     @gossip = Gossip.new
+    @tags = Tag.all
   end
 
   def create
@@ -22,6 +23,7 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:id])
+    @tags = Tag.all
   end
 
   def update
@@ -43,7 +45,7 @@ class GossipsController < ApplicationController
   private
 
   def gossip_params
-    params.require(:gossip).permit(:title, :content, :user_id)
+    params.require(:gossip).permit(:title, :content, :user_id, tag_ids: [])
   end
 end
 
