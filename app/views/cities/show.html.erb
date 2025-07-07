@@ -1,0 +1,10 @@
+<h1>Ville : <%= @city.name %></h1>
+
+<h2>Potins :</h2>
+<ul>
+  <% @city.users.each do |user| %>
+    <% user.gossips.each do |gossip| %>
+      <li><%= link_to gossip.title, gossip_path(gossip) %> par <%= user.first_name %></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -1,8 +1,11 @@
 <div class="container">
   <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
-
+  <p><strong>Description :</strong> <%= @user.description %></p>
+  <p><strong>Age :</strong> <%= @user.age %></p>
   <p><strong>Email :</strong> <%= @user.email %></p>
   <p><strong>Ville :</strong> <%= @user.city.name if @user.city %></p>
+
+  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-primary" %>
 
   <hr>
   <h3>Ses potins :</h3>
