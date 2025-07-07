@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+get '/login',  to: 'sessions#new'
+post '/login', to: 'sessions#create'
+delete '/logout', to: 'sessions#destroy'
   # Définit la route racine du site ("/") qui pointe vers l'action 'home' du contrôleur StaticPages
   root to: 'static_pages#home'
 
