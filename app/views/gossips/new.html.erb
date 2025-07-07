@@ -18,13 +18,13 @@
 
   <div>
    <%= f.label :tag_ids do %>
-   <strong>Choix du tag</strong>
+      <strong class="tag-label">Choix du tag</strong>
    <% end %><br>
-    <%= f.collection_select :tag_ids, @tags, :id, :title, {}, class: "form-select w-25" %>
+   <%= f.collection_select :tag_ids, @tags, :id, :title, {}, class: "form-select w-25" %>
   </div>
   <br>
 
-  <%= f.submit "Créer", class: "btn btn-success" %>
+   <%= f.submit "Créer", class: "btn btn-success" %>
 <% end %>
 
 <hr>
