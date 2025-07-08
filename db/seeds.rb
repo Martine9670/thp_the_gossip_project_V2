@@ -61,7 +61,7 @@ end
     )
 end
 # Crée des tags spécifiques s'ils n'existent pas déjà
-  tags = ["Amour", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]
+  tags = ["Amour", "Animaux", "Travail", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]
 
   tags.each do |title|
     Tag.find_or_create_by(title: title)
