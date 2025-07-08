@@ -14,7 +14,7 @@
   <% @user.gossips.each do |gossip| %>
     <div class="card my-2">
       <div class="card-body">
-        <h5 class="card-title"><%= gossip.title %></h5>
+        <h6 class="card-title"><%= gossip.title %></h6>
         <p class="card-text"><%= gossip.content.truncate(100) %></p>
         <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-info' %>
       </div>

@@ -1,5 +1,4 @@
 <h2><%= @gossip.title %></h2>
-<br>
 
 <p><strong>Auteur :</strong> 
   <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
@@ -8,7 +7,6 @@
 <p><strong>Ville de l'auteur :</strong> 
   <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) if @gossip.user.city %>
 </p>
-
 
 <% if @gossip.tags.any? %>
   <p><strong>Tags associés :</strong></p>
@@ -26,24 +24,23 @@
     <p class="text-muted"><em>Créé le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
     <p><strong>Likes :</strong> <%= @gossip.likes.count %></p>
 
-<% if logged_in? %>
-  <% if current_user.liked?(@gossip) %>
-    <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger btn-sm" %>
-  <% else %>
-    <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary btn-sm" %>
-  <% end %>
-<% else %>
-  <p><%= link_to "Connectez-vous pour liker", login_path %></p>
-<% end %>
+    <% if logged_in? %>
+      <% if current_user.liked?(@gossip) %>
+        <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+      <% else %>
+        <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary btn-sm" %>
+      <% end %>
+    <% else %>
+      <p><%= link_to "Connectez-vous pour liker", login_path %></p>
+    <% end %>
+    <hr>
 
-<hr>
     <div class="d-flex gap-2">
       <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-info btn-sm" %>
       <%= button_to "Supprimer ce potin", gossip_path(@gossip), 
                     method: :delete, 
                     data: { turbo_confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, 
                     class: "btn btn-danger btn-sm" %>
-      <hr>
       <p1>
         <strong>Commentaires :</strong> 
         <span class="badge bg-primary"><%= @gossip.comments.count %></span>
@@ -52,20 +49,14 @@
   </div>
 </div>
 
-<hr>
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
-
-
-<hr>
-<h3>Commentaires :</h3>
+<h4>Commentaires :</h4>
 
 <% if @gossip.comments.any? %>
 <% @gossip.comments.each do |comment| %>
-  <div style="border: 1px solid red; padding: 10px; margin-bottom: 10px;">
+  <div style="border: 1px solid rgb(255, 0, 234); padding: 10px; margin-bottom: 10px; background-color: beige;"> 
     <p><strong>Contenu :</strong> <%= comment.content %></p>
     <p><strong>créé le :</strong> <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
-<hr>
+
   <div class="d-flex gap-2">
     <%= link_to "Modifier votre commentaire", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
     <%= button_to "Supprimer votre commentaire", gossip_comment_path(@gossip, comment), method: :delete, data: { "turbo-confirm": "Supprimer ce commentaire ?" }, class: "btn btn-outline-danger btn-sm" %>
@@ -73,11 +64,10 @@
   </div>
 <% end %>
   <% else %>
-    <p>Aucun commentaire pour l'instant.</p>
+    <p>Aucun commentaire pour l'instant...</p>
   <% end %>
 
-<hr>
-<h3>Ajouter un commentaire</h3>
+<h4>Ajouter un commentaire</h4>
 
 <%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
   <div>
@@ -86,12 +76,10 @@
   <div>
     <%= form.submit "Envoyer", class: "btn btn-primary" %>
     </div>
-    <br>
 <% end %>
 
 <hr>
   <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
 
 
 
