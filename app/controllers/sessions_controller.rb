@@ -3,8 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
+    password = params[:password]
+
+    if password.nil? || password.length < 8
+      flash.now[:alert] = "Le mot de passe doit contenir au moins 8 caractères."
+      return render :new
+    end
+
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(password)
       session[:user_id] = user.id
       redirect_to root_path, notice: "Connecté !"
     else

@@ -4,13 +4,13 @@
 <%= form_with url: login_path, method: :post, local: true do %>
   <div>
     <%= label_tag :email %><br>
-    <%= text_field_tag :email %>
+    <%= text_field_tag :email, nil, required: true %>
   </div>
 
   <div>
     <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, nil, required: true, minlength: 8, placeholder: "Minimum 8 caractères" %>
   </div>
-<br>
-<%= submit_tag "Se connecter", class: "btn-login" %>
+  <br>
+  <%= submit_tag "Se connecter", class: "btn-login" %>
 <% end %>
