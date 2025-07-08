@@ -10,7 +10,7 @@
   <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-potin" %>
 
   <hr>
-  <h2>Ses potins :</h2>
+  <h4>Ses potins :</h4>
   <% @user.gossips.each do |gossip| %>
     <div class="card my-2">
       <div class="card-body">
