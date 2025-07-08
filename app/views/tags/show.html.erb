@@ -1,13 +1,21 @@
-<h2>Potins avec le tag : <%= @tag.title %></h2>
+<h4>Potins avec le tag : <%= @tag.title %></h4>
+<br>
 
-<% if @gossips.any? %>
-  <ul>
+<div class="d-flex flex-wrap gap-3">
+  <% if @gossips.any? %>
     <% @gossips.each do |gossip| %>
-      <li><%= link_to gossip.title, gossip_path(gossip) %></li>
+      <div class="card shadow-sm" style="width: 250px;">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text"><%= gossip.content.truncate(100) %></p>
+          <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-info btn-sm' %>
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>Aucun potin avec ce tag pour l’instant.</p>
-<% end %>
-
-<%= link_to "Retour à l'accueil", root_path, class: "btn btn-secondary mt-3" %>
+  <% else %>
+    <p class="text-muted fst-italic">Aucun potin avec ce tag pour l’instant.</p>
+  <% end %>
+</div>
+<hr>
+  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
+<hr>

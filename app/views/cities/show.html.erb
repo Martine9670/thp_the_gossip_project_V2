@@ -1,6 +1,4 @@
-<h4>Ville : <%= @city.name %></h4>
-
-<h2>Potins de la ville</h2>
+<h4>Potins de la ville de : <%= @city.name %></h4>
 <br>
 <div class="row g-4">
   <% @city.users.each do |user| %>
