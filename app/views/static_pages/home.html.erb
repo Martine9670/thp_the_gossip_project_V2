@@ -2,11 +2,12 @@
   <%= link_to "Nouveau Potin", new_gossip_path, class: "btn btn-info" %>
   <%= link_to "Voir tous les utilisateurs", users_path, class: "btn btn-info" %>
   <%= link_to "Inscription", new_user_path, class: "btn btn-info" %>
-</div>
 
-<p1>Nombre de potins : <%= @gossips.count %></p1>
+<p class="potin-count">Nombre de potins : <%= @gossips.count %></p>
 <br>
 <%= link_to "Voir tous les potins", gossips_path, class: "btn btn-potin" %>
+</div>
+
 
 
 <div class="container my-4">
@@ -14,7 +15,7 @@
 
   <div class="row">
     <% @gossips.each do |gossip| %>
-      <div class="col-md-6 mb-4">
+      <div class="col-md-3 mb-2">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title"><%= gossip.title %></h5>

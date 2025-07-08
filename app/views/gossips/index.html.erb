@@ -1,12 +1,25 @@
-<h1>Liste des potins</h1>
+<h4>Liste des potins</h4>
+<br>
 
-<ul>
+<div class="row g-4">
   <% @gossips.each do |gossip| %>
-    <li>
-      <strong><%= link_to gossip.title, gossip_path(gossip) %></strong>
-      - par <%= gossip.user.first_name if gossip.user %>
-
-        <p1>Nombre de commentaires : <%= gossip.comments.count %></p1>
-    </li>
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h6 class="card-title">
+            <%= link_to gossip.title, gossip_path(gossip) %>
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            par <%= gossip.user.first_name if gossip.user %>
+          </h6>
+          <p class="card-text text-secondary">
+            💬 <strong><%= gossip.comments.count %></strong> commentaire<%= "s" if gossip.comments.count > 1 %>
+          </p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+<hr>
+  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
+<hr>

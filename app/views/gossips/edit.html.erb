@@ -1,10 +1,11 @@
-<h1>Modifier le potin</h1>
+<h4>Modifier le potin</h4>
+<br>
 
-<%= form_with model: @gossip, local: true do |form| %>
+<%= form_with model: @gossip, local: true, html: { class: "needs-validation" } do |form| %>
   <% if @gossip.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(@gossip.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
-      <ul>
+      <h5><%= pluralize(@gossip.errors.count, "erreur") %> empêchent la sauvegarde :</h5>
+      <ul class="mb-0">
         <% @gossip.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -12,17 +13,18 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label fw-bold" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Titre du potin" %>
   </div>
 
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </div>
+  <div class="mb-3">
+    <%= form.label :content, class: "form-label fw-bold" %>
+    <%= form.text_area :content, class: "form-control", rows: 5, placeholder: "Contenu du potin" %>
+  </div>  
+  <br>
 
   <div>
-    <%= form.submit "Mettre à jour", class: "btn purple" %>
+    <%= form.submit "💾 Mettre à jour", class: "btn btn-info" %>
   </div>
 <% end %>

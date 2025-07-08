@@ -1,4 +1,5 @@
 <h2><%= @gossip.title %></h2>
+<br>
 
 <p><strong>Auteur :</strong> 
   <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
@@ -37,7 +38,7 @@
 
 <hr>
     <div class="d-flex gap-2">
-      <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn purple btn-sm" %>
+      <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-info btn-sm" %>
       <%= button_to "Supprimer ce potin", gossip_path(@gossip), 
                     method: :delete, 
                     data: { turbo_confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, 

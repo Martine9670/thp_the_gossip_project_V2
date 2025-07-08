@@ -13,7 +13,7 @@ body {
 }
 
 .btn-info:hover {
-  background-color: #e85aa2; /* rose un peu plus foncé */
+  background-color: #e85aa2;
   color: white;
 }
 
@@ -21,23 +21,27 @@ body {
   background-color: #f8bbdb;
 }
 
+.potin-count {
+  margin-left: auto;
+  font-weight: bold;
+  color: #8ff7e1;
+}
 
-p1 {
-  color: rgb(110, 90, 226);
-  font-size: large;
+h2 {
+  color: white;
+  text-align: center;
+  text-decoration-line: underline;
   font-weight: bold;
 }
 
-p4 {
-  color: black;
-  font-size: x-large;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 h3 {
   color: rgb(235, 9, 223);
   margin-top: 40%;
   text-align: center;
+}
+
+h4 { text-decoration-line: underline;
 }
 
 header {
@@ -99,4 +103,19 @@ header nav a:hover {
   background-color: #e85aa2;
   color: white;
 }
+
+.contact-mail {
+  font-size: 1.1rem;
+}
+
+.contact-mail a {
+  color:#d1fdf4;
+  font-weight: bold;
+}
+
+.contact-mail a:hover {
+  text-decoration: underline;
+  color: #c04090;
+}
+
 
