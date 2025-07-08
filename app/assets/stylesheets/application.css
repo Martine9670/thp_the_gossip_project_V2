@@ -1,10 +1,14 @@
 body {
-  background-color: white;
+  background-image: url("L3M.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .btn-info {
-  background-color: #f78fb3; /* rose clair */
-  color: white;
+  background-color: #8ff7e1;
+  color: black;
   border: none;
 }
 
@@ -17,8 +21,23 @@ body {
   background-color: #f8bbdb;
 }
 
+
 p1 {
   color: rgb(110, 90, 226);
+  font-size: large;
+  font-weight: bold;
+}
+
+p4 {
+  color: black;
+  font-size: x-large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+  color: rgb(235, 9, 223);
+  margin-top: 40%;
+  text-align: center;
 }
 
 header {
@@ -48,3 +67,36 @@ header nav a:hover {
 .tag-label {
   color: rgb(201, 35, 201);
 }
+
+.return-link {
+  color: #f5a7ce;
+  font-weight: bold;
+}
+
+.return-link:hover {
+  text-decoration: underline;
+  color: #eb66b8;
+}
+
+.btn-potin {
+  background-color: #e85aa2;
+  color: white;
+  border: none;
+}
+
+.btn-potin:hover {
+  background-color: #8ff7e1;
+  color: black;
+}
+
+.btn-login {
+  background-color: #8ff7e1;
+  color: black;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #e85aa2;
+  color: white;
+}
+

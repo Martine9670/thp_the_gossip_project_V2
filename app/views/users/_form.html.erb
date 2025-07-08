@@ -48,11 +48,11 @@
   <% end %>
 <br>
   <div>
-    <%= form.submit user.new_record? ? "S'inscrire" : "Mettre à jour", class: "btn purple" %>
+    <%= form.submit user.new_record? ? "S'inscrire" : "Mettre à jour", class: "btn btn-info" %>
   </div>
   <hr>
 <% end %>
 
-  <%= link_to "Retour à l'accueil", root_path %>
+  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
 <hr>
 

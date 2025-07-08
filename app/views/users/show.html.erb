@@ -7,22 +7,22 @@
     <%= link_to @user.city.name, city_path(@user.city) if @user.city %>
   </p>
 
-  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-primary" %>
+  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-potin" %>
 
   <hr>
-  <h3>Ses potins :</h3>
+  <h2>Ses potins :</h2>
   <% @user.gossips.each do |gossip| %>
     <div class="card my-2">
       <div class="card-body">
         <h5 class="card-title"><%= gossip.title %></h5>
         <p class="card-text"><%= gossip.content.truncate(100) %></p>
-        <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-primary' %>
+        <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-info' %>
       </div>
     </div>
   <% end %>
 </div>
 <hr>
-  <%= link_to "Retour à l'accueil", root_path %>
+  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
 <hr>
 
 
