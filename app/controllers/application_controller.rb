@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end
-
-  def logged_in?
-    current_user.present?
-  end
+  include SessionsHelper  # Inclusion du helper
+  helper_method :current_user, :logged_in?  # Permet l'accès dans les vues
 
   def require_login
     unless logged_in?
