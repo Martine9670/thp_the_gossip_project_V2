@@ -47,16 +47,22 @@
       </nav>
     </header>
 
-<main class="container flex-grow-1">
-  <% flash.each do |type, message| %>
-    <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
-      <%= message %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% end %>
+    <main class="container flex-grow-1">
+        <% if notice %>
+          <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+            <%= notice %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
 
-  <%= yield %>
-</main>
+        <% if alert %>
+          <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+            <%= alert %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      <%= yield %>
+    </main>
  
     <footer class="bg-secondary text-light py-1 mt-auto">
       <div class="container text-center">
