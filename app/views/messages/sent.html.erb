@@ -1,0 +1,15 @@
+<h2>Messages envoyés</h2>
+
+<% if @sent_messages.any? %>
+  <% @sent_messages.each do |msg| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <p><strong>À :</strong> <%= msg.recipients.map(&:first_name).join(", ") %></p>
+        <p><strong>Contenu :</strong> <%= msg.content %></p>
+        <p><em>Envoyé le <%= msg.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>Aucun message envoyé.</p>
+<% end %>

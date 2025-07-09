@@ -35,6 +35,9 @@
           <%= link_to 'Contact', contact_path, class: 'text-white me-3' %>
 
           <% if logged_in? %>
+            <%= link_to 'Messages reçus', messages_path, class: 'text-white me-3' %>
+            <%= link_to 'Messages envoyés', sent_messages_path, class: 'text-white me-3' %>
+            
             <span class="text-white me-3"><br>Bonjour <%= current_user.first_name %> !</span>
             <%= button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-success btn-sm" %>
           <% else %>

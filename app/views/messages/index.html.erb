@@ -1,0 +1,15 @@
+<h2>Messages reçus</h2>
+
+<% if @received_messages.any? %>
+  <% @received_messages.each do |msg| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <p><strong>De :</strong> <%= msg.sender.first_name %></p>
+        <p><strong>Contenu :</strong> <%= msg.content %></p>
+        <p><em>Reçu le <%= msg.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>Aucun message reçu.</p>
+<% end %>

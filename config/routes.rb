@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  get "messages/index"
+  get "messages/sent"
 get '/login',  to: 'sessions#new'
 post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
   # Définit la route racine du site ("/") qui pointe vers l'action 'home' du contrôleur StaticPages
   root to: 'static_pages#home'
 
-  # Génère automatiquement toutes les routes REST (index, show, new, create, edit, update, destroy) pour les potins
   resources :gossips
 
   resources :gossips do
@@ -16,12 +17,18 @@ delete '/logout', to: 'sessions#destroy'
     resources :likes, only: [:create, :destroy]
   end
 
-  # Génère automatiquement toutes les routes REST pour les utilisateurs
   resources :users
 
   resources :cities, only: [:show]
 
   resources :tags, only: [:show]
+
+  resources :messages, only: [:index] do
+    collection do
+      get 'sent'
+    end
+  end
+
 
   # Route système de Rails pour vérifier l’état de santé de l’application (utile pour le déploiement)
   # Accessible via GET /up
