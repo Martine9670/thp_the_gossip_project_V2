@@ -1,15 +1,19 @@
-<h2>Messages envoyés</h2>
+<h1>Messages envoyés</h1>
 
 <% if @sent_messages.any? %>
-  <% @sent_messages.each do |msg| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <p><strong>À :</strong> <%= msg.recipients.map(&:first_name).join(", ") %></p>
-        <p><strong>Contenu :</strong> <%= msg.content %></p>
-        <p><em>Envoyé le <%= msg.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
-      </div>
-    </div>
-  <% end %>
+  <ul class="list-group">
+    <% @sent_messages.each do |msg| %>
+      <li class="list-group-item">
+        <strong>À :</strong>
+        <%= msg.recipients.map { |r| r.first_name }.join(", ") %> <br>
+        <strong>Envoyé le :</strong> <%= msg.created_at.strftime("%d/%m/%Y %H:%M") %> <br>
+        <p><%= msg.content %></p>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
-  <p>Aucun message envoyé.</p>
+  <p>Vous n'avez envoyé aucun message.</p>
 <% end %>
+
+<%= link_to "Messages reçus", messages_path, class: "btn btn-primary mt-3" %>
+<%= link_to "Nouveau message", new_message_path, class: "btn btn-success mt-3 ms-2" %>

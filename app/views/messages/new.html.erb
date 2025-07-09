@@ -1,0 +1,21 @@
+<h1>Nouvel message</h1>
+
+<%= form_with model: @message, url: messages_path do |f| %>
+  <div class="mb-3">
+    <%= f.label :content, "Message" %>
+    <%= f.text_area :content, class: "form-control", rows: 4 %>
+  </div>
+
+  <div class="mb-3">
+    <%= label_tag "Destinataires" %><br>
+    <% @users.each do |user| %>
+      <div class="form-check form-check-inline">
+        <%= check_box_tag "message[user_ids][]", user.id, false, class: "form-check-input", id: "user_#{user.id}" %>
+        <%= label_tag "user_#{user.id}", "#{user.first_name} #{user.last_name}", class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Envoyer", class: "btn btn-primary" %>
+  <%= link_to "Annuler", messages_path, class: "btn btn-secondary ms-2" %>
+<% end %>

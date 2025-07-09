@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :require_login
+
   def create
     @gossip = Gossip.find(params[:gossip_id])
     @comment = @gossip.comments.build(comment_params)

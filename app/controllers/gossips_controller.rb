@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+
+  before_action :require_login
+
   def index
     @gossips = Gossip.includes(:user, :comments).all
   end
@@ -14,6 +17,8 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
+    @gossip.user = current_user  # <-- assure-toi que l'user connecté soit bien assigné
+    
     if @gossip.save
       redirect_to gossip_path(@gossip), notice: "Potin créé avec succès !"
     else

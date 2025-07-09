@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get "messages/index"
-  get "messages/sent"
+
 get '/login',  to: 'sessions#new'
 post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
@@ -23,7 +22,7 @@ delete '/logout', to: 'sessions#destroy'
 
   resources :tags, only: [:show]
 
-  resources :messages, only: [:index] do
+  resources :messages, only: [:index, :new, :create, :show, :destroy] do
     collection do
       get 'sent'
     end
