@@ -1,21 +1,26 @@
-<h1>Nouvel message</h1>
+<h4>Nouveau message</h4>
 
-<%= form_with model: @message, url: messages_path do |f| %>
-  <div class="mb-3">
-    <%= f.label :content, "Message" %>
-    <%= f.text_area :content, class: "form-control", rows: 4 %>
-  </div>
+    <%= form_with model: @message, url: messages_path do |f| %>
+    <div class="mb-3">
+        <%= f.label :content, "Message" %>
+        <%= f.text_area :content, class: "form-control", rows: 4 %>
+    </div>
 
-  <div class="mb-3">
-    <%= label_tag "Destinataires" %><br>
-    <% @users.each do |user| %>
-      <div class="form-check form-check-inline">
-        <%= check_box_tag "message[user_ids][]", user.id, false, class: "form-check-input", id: "user_#{user.id}" %>
-        <%= label_tag "user_#{user.id}", "#{user.first_name} #{user.last_name}", class: "form-check-label" %>
-      </div>
-    <% end %>
-  </div>
+    <div class="card mb-3 p-3">
+    <label class="form-label fw-bold">Destinataires</label>
+    <div class="row">
+        <% @users.each do |user| %>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="form-check">
+            <%= check_box_tag "message[user_ids][]", user.id, false, class: "form-check-input", id: "user_#{user.id}" %>
+            <%= label_tag "user_#{user.id}", "#{user.first_name} #{user.last_name}", class: "form-check-label" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    </div>
 
-  <%= f.submit "Envoyer", class: "btn btn-primary" %>
+  <%= f.submit "Envoyer", class: "btn btn-info" %>
   <%= link_to "Annuler", messages_path, class: "btn btn-secondary ms-2" %>
 <% end %>
+
