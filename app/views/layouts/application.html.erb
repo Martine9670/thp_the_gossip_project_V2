@@ -51,7 +51,6 @@
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
           <%= message %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <% end %>      
     <%= yield %>
@@ -63,5 +62,16 @@
         <small>Contact : <a href="mailto:contact@thegossipproject.com" class="text-light text-decoration-underline">contact@thegossipproject.com</a></small>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          document.querySelectorAll('.alert').forEach(el => {
+            el.classList.remove('show');
+            setTimeout(() => el.remove(), 300); // attends la fin de l'animation
+          });
+        }, 10000); // 10 secondes
+      });
+    </script>
   </body>
 </html>
