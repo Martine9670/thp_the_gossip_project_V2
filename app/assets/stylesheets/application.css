@@ -34,7 +34,6 @@ h2 {
   font-weight: bold;
 }
 
-
 h3 {
   color: rgb(235, 9, 223);
   margin-top: 1rem;
@@ -45,7 +44,8 @@ h4 { text-decoration-line: underline;
 }
 
 header {
-  color: rgb(241, 8, 210);
+  color: rgb(8, 241, 86);
+  font-family: chewy;
 }
 
 header nav a {
@@ -104,25 +104,16 @@ header nav a:hover {
   color: white;
 }
 
-.contact-mail {
-  font-size: 1.1rem;
-}
-
-.contact-mail a {
-  color:#d1fdf4;
-  font-weight: bold;
-}
-
 .contact-mail a:hover {
   text-decoration: underline;
   color: #c04090;
 }
 
-.welcome {
+.tgp {
   font-family: chewy;
-  color: #ec2e8d;
+  color: rgb(8, 241, 86);
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   text-shadow: 2px 2px 5px #00000050;
   margin-bottom: 2rem;
@@ -132,7 +123,8 @@ header nav a:hover {
   background: linear-gradient(135deg, #4e54c8, #8f94fb);
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 1rem;
+  border-radius: 10rem;
+  border: 2px solid rgb(255, 0, 255); /* juste pour debug */
   box-shadow: 0 8px 24px rgba(78, 84, 200, 0.4);
 }
 
@@ -160,7 +152,7 @@ header nav a:hover {
 
 .welcome-img img {
   width: 120px;
-  border-radius: 50%;
+  border-radius: 30%;
   box-shadow: 0 0 10px #ffd700;
 }
 
