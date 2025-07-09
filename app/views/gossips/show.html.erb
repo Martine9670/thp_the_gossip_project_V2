@@ -38,9 +38,10 @@
     <div class="d-flex gap-2">
       <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-info btn-sm" %>
       <%= button_to "Supprimer ce potin", gossip_path(@gossip), 
-                    method: :delete, 
-                    data: { turbo_confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, 
-                    class: "btn btn-danger btn-sm" %>
+          method: :delete, 
+          data: { turbo: false },
+          onclick: "return confirm('Supprimer ce potin ?')", 
+          class: "btn btn-danger btn-sm" %>
       <p1>
         <strong>Commentaires :</strong> 
         <span class="badge bg-primary"><%= @gossip.comments.count %></span>
@@ -57,10 +58,14 @@
     <p><strong>Contenu :</strong> <%= comment.content %></p>
     <p><strong>créé le :</strong> <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
 
-  <div class="d-flex gap-2">
-    <%= link_to "Modifier votre commentaire", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
-    <%= button_to "Supprimer votre commentaire", gossip_comment_path(@gossip, comment), method: :delete, data: { "turbo-confirm": "Supprimer ce commentaire ?" }, class: "btn btn-outline-danger btn-sm" %>
-  </div>
+    <div class="d-flex gap-2">
+      <%= link_to "Modifier votre commentaire", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
+      <%= button_to "Supprimer votre commentaire", gossip_comment_path(@gossip, comment), 
+          method: :delete, 
+          data: { turbo: false },
+          onclick: "return confirm('Supprimer ce commentaire ?')",          
+          class: "btn btn-outline-danger btn-sm" %>
+    </div>
   </div>
 <% end %>
   <% else %>
