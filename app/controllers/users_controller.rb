@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, only: [:edit, :update]
+
+
   # Liste des utilisateurs
   def index
     @users = User.all
@@ -46,5 +49,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description, :age, :city_id, :email, :password, :password_confirmation)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:alert] = "Vous devez être connecté pour modifier votre profil."
+      redirect_to login_path
+    end
   end
 end
