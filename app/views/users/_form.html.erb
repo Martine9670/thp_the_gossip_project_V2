@@ -1,7 +1,7 @@
 <%= form_with model: user, local: true do |form| %>
   <% if user.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(user.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
+      <h4><%= pluralize(user.errors.count, "erreur") %> Échec de la sauvegarde:</h4>
       <ul>
         <% user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -48,7 +48,7 @@
   <% end %>
 <br>
   <div>
-    <%= form.submit user.new_record? ? "S'inscrire" : "Mettre à jour", class: "btn btn-info" %>
+    <%= form.submit user.new_record? ? "🔒 S'inscrire" : "💾 Mettre à jour", class: "btn btn-info" %>
   </div>
   <hr>
 <% end %>

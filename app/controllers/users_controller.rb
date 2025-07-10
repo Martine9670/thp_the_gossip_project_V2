@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       redirect_to @user, notice: "Profil mis à jour !"
     else
       Rails.logger.info(@user.errors.full_messages)
+      flash.now[:alert] = "Échec de la mise à jour. Merci de corriger les erreurs."
       render :edit, status: :unprocessable_entity
     end
   end

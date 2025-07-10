@@ -25,6 +25,12 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, length: { minimum: 8 }, if: -> { password.present? }
+
+
    # Vérifie si l'utilisateur a liké un objet donné (gossip ou comment)
   def liked?(likeable)
     likes.exists?(likeable: likeable)
