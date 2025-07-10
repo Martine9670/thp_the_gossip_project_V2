@@ -217,6 +217,50 @@ header nav a:hover {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+.profile-card {
+  max-width: 500px;
+  margin: 20px 0 20px 5px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  border: 1px solid #e0e0e0;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #c84ead, #8f94fb);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.profile-body {
+  padding: 20px;
+}
+
+.profile-body p {
+  margin: 12px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.city-link {
+  color: #4e54c8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.city-link:hover {
+  text-decoration: underline;
+}
+
+
 
 
 
