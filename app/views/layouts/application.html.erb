@@ -33,6 +33,8 @@
           <%= link_to 'Accueil', root_path, class: 'text-white me-3' %>
           <%= link_to 'Team', team_path, class: 'text-white me-3' %>
           <%= link_to 'Contact', contact_path, class: 'text-white me-3' %>
+          <%= link_to "Inscription", new_user_path, class: "btn btn-potin btn-sm me-3" %>
+
 
           <% if logged_in? %>
             <%= link_to 'Messages reçus', messages_path, class: 'btn btn-info btn-sm' %>

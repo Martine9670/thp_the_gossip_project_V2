@@ -1,6 +1,7 @@
 class GossipsController < ApplicationController
-
   before_action :require_login
+  before_action :set_gossip, only: [:edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
     @gossips = Gossip.includes(:user, :comments).all
@@ -17,7 +18,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = current_user  # <-- assure-toi que l'user connecté soit bien assigné
+    @gossip.user = current_user
     
     if @gossip.save
       redirect_to gossip_path(@gossip), notice: "Potin créé avec succès !"
@@ -27,12 +28,10 @@ class GossipsController < ApplicationController
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
     @tags = Tag.all
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
       redirect_to gossip_path(@gossip), notice: "Potin mis à jour avec succès !"
     else
@@ -42,16 +41,24 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to root_path, notice: "Potin supprimé avec succès !"
   end
 
   private
 
+  def set_gossip
+    @gossip = Gossip.find(params[:id])
+  end
+
   def gossip_params
     params.require(:gossip).permit(:title, :content, :user_id, tag_ids: [])
   end
+
+  def authorize_user!
+    unless @gossip.user == current_user
+      flash[:error] = "Tu n'es pas autorisé à modifier ce potin."
+      redirect_to gossips_path
+    end
+  end
 end
-
-

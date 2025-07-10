@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def create
     @gossip = Gossip.find(params[:gossip_id])
     @comment = @gossip.comments.build(comment_params)
-    @comment.user = User.first # À remplacer par current_user plus tard
+    @comment.user = current_user
 
     if @comment.save
       redirect_to gossip_path(@gossip), notice: "Commentaire ajouté !"

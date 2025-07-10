@@ -15,11 +15,16 @@
           <p class="card-text text-secondary">
             💬 <strong><%= gossip.comments.count %></strong> commentaire<%= "s" if gossip.comments.count > 1 %>
           </p>
+
+          <% if gossip.user == current_user %>
+            <%= link_to 'Supprimer', gossip_path(gossip), method: :delete, data: { confirm: "Tu es sûr de vouloir supprimer ce potin ?" }, class: "btn btn-sm btn-danger" %>
+          <% end %>
+
         </div>
       </div>
     </div>
   <% end %>
 </div>
 <hr>
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
+<%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
 <hr>
