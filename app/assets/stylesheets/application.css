@@ -132,7 +132,7 @@ header nav a:hover {
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 10rem;
-  border: 2px solid rgb(255, 0, 255); /* juste pour debug */
+  border: 2px solid rgb(255, 0, 255);
   box-shadow: 0 8px 24px rgba(78, 84, 200, 0.4);
 }
 
@@ -156,6 +156,7 @@ header nav a:hover {
   font-size: 2rem;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   margin-bottom: 1rem;
+  animation: rainbow 2s linear infinite;
 }
 
 .welcome-img img {
