@@ -54,7 +54,7 @@
 
 <% if @gossip.comments.any? %>
 <% @gossip.comments.each do |comment| %>
-  <div style="border: 1px solid rgb(255, 0, 234); padding: 10px; margin-bottom: 10px; background-color: beige;"> 
+  <div class="potin-box">
     <p><strong>Contenu :</strong> <%= comment.content %></p>
     <p><strong>créé le :</strong> <%= comment.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
 

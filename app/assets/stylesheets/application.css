@@ -27,6 +27,13 @@ body {
   color: #8ff7e1;
 }
 
+.potin-box {
+  border: 1px solid rgb(255, 0, 234);
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: beige;
+}
+
 h2 {
   color: white;
   text-align: center;
@@ -147,7 +154,7 @@ header nav a:hover {
 
 .highlight {
   font-weight: 700;
-  color: #ffd700;
+  color: #eea8bf;
 }
 
 .title {
