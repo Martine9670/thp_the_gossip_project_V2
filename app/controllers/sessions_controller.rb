@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: "Déconnecté."
+    redirect_to root_path, notice: "Vous êtes Déconnecté !"
   end
 end

@@ -4,7 +4,7 @@
 <%= form_with model: @gossip, local: true, html: { class: "needs-validation" } do |form| %>
   <% if @gossip.errors.any? %>
     <div class="alert alert-danger">
-      <h5><%= pluralize(@gossip.errors.count, "erreur") %> empêchent la sauvegarde :</h5>
+      <h5><%= pluralize(@gossip.errors.count, "erreur") %> la sauvegarde a échouée :</h5>
       <ul class="mb-0">
         <% @gossip.errors.full_messages.each do |message| %>
           <li><%= message %></li>

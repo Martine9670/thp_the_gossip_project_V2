@@ -36,7 +36,7 @@ class GossipsController < ApplicationController
     if @gossip.update(gossip_params)
       redirect_to gossip_path(@gossip), notice: "Potin mis à jour avec succès !"
     else
-      flash.now[:alert] = "La mise à jour a échoué. Veuillez corriger les erreurs."
+      flash.now[:alert] = "La mise à jour a échouée. Veuillez corriger les erreurs."
       render :edit, status: :unprocessable_entity
     end
   end
