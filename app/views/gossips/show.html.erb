@@ -86,16 +86,20 @@
     <p>Aucun commentaire pour l'instant...</p>
   <% end %>
 
-<h5>📝 Ajouter un commentaire :</h5>
+<div class="card my-3">
+  <div class="card-body bg-danger bg-opacity-50">
+    <h5 class="card-title">📝 Ajouter un commentaire :</h5>
 
-<%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
-  <div>
-    <%= form.text_area :content, placeholder: "Votre commentaire ici...", rows: 2 %>
+    <%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
+      <div class="mb-3">
+        <%= form.text_area :content, placeholder: "Votre commentaire ici...", rows: 2, class: "form-control" %>
+      </div>
+      <div>
+        <%= form.submit "Envoyer", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= form.submit "Envoyer", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
 <hr>
   <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
