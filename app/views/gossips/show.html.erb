@@ -15,14 +15,14 @@
 
 <div class="card mb-3">
   <div class="card-body ps-3">
-    <% if @gossip.tags.any? %>
-      <p><strong>Tags associés :</strong></p>
-      <div class="mb-3">
-        <% @gossip.tags.each do |tag| %>
-          <%= link_to tag.title, tag_path(tag), class: "badge bg-info text-dark me-1 text-decoration-none" %>
-        <% end %>
-      </div>
+<% if @gossip.tags.any? %>
+  <p class="mb-2 d-flex align-items-center flex-wrap">
+    <strong class="me-2">Tags associés :</strong>
+    <% @gossip.tags.each do |tag| %>
+      <%= link_to "🏷️ #{tag.title}".html_safe, tag_path(tag), class: "badge bg-info text-decoration-none me-1 mb-1" %>
     <% end %>
+  </p>
+<% end %>
 
     <p><strong><u>Contenu</u> :</strong></p>
     <p><%= @gossip.content %></p>
@@ -72,8 +72,8 @@
 
     <div class="d-flex gap-2">
       <% if current_user == comment.user %>
-      <%= link_to "Modifier votre commentaire", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
-      <%= button_to "Supprimer votre commentaire", gossip_comment_path(@gossip, comment), 
+      <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn purple btn-sm" %>
+      <%= button_to "Supprimer", gossip_comment_path(@gossip, comment), 
           method: :delete, 
           data: { turbo: false },
           onclick: "return confirm('Supprimer ce commentaire ?')",          
