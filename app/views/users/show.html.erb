@@ -2,9 +2,10 @@
   <div class="profile-header">
     <h4>🪪 <%= @user.first_name %> <%= @user.last_name %></h4>
   </div>
+
   <div class="profile-body">
     <p><strong>📝 Description :</strong> <%= @user.description %></p>
-    <p><strong>🎂 Âge :</strong> <%= @user.age %></p>
+    <p><strong>🎂 Âge :</strong> <%= @user.age ? "#{@user.age} ans" : "Non renseigné" %></p>
     <p><strong>📧 Email :</strong> <%= @user.email %></p>
     <p><strong>📍 Ville :</strong> 
       <%= link_to @user.city.name, city_path(@user.city), class: "city-link" if @user.city %>
@@ -27,6 +28,7 @@
     </div>
   <% end %>
 </div>
+
 <hr>
   <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
 <hr>

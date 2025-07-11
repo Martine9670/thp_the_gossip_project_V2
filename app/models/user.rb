@@ -29,10 +29,34 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 8 }, if: -> { password.present? }
+  # Validation personnalisée pour birthdate
+  validate :birthdate_must_be_valid
 
 
    # Vérifie si l'utilisateur a liké un objet donné (gossip ou comment)
   def liked?(likeable)
     likes.exists?(likeable: likeable)
+  end
+   # Méthode pour calculer l'âge dynamiquement
+  def age
+    return unless birthdate
+
+    today = Date.today
+    age = today.year - birthdate.year
+    anniversaire = Date.new(today.year, birthdate.month, birthdate.day)
+    age -= 1 if today < anniversaire
+    age
+  end
+
+  private
+
+  def birthdate_must_be_valid
+    return if birthdate.blank?
+
+    if birthdate > Date.today
+      errors.add(:birthdate, "ne peut pas être dans le futur")
+    elsif birthdate < 120.years.ago
+      errors.add(:birthdate, "est trop ancienne pour être valide")
+    end
   end
 end

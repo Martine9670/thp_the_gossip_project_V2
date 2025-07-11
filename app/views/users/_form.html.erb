@@ -14,22 +14,27 @@
     <%= form.label :first_name %><br>
     <%= form.text_field :first_name, autocomplete: "given-name" %>
   </div>
+
   <div>
     <%= form.label :last_name %><br>
     <%= form.text_field :last_name, autocomplete: "family-name" %>
   </div>
+
   <div>
     <%= form.label :description %><br>
     <%= form.text_area :description, rows: 4, placeholder: "Présente-toi en quelques mots..." %>
   </div>
+
   <div>
-    <%= form.label :age %><br>
-    <%= form.number_field :age, min: 0, max: 150, placeholder: "Votre âge" %>
+    <%= form.label :birthdate, "Date de naissance" %><br>
+    <%= form.date_select :birthdate, order: [:day, :month, :year], start_year: Date.today.year - 120, end_year: Date.today.year, prompt: { day: 'Jour', month: 'Mois', year: 'Année' } %>
   </div>
+
   <div>
     <%= form.label :city_id, "Ville" %><br>
     <%= form.collection_select :city_id, City.all, :id, :name, prompt: "Choisissez une ville", autocomplete: "address-level2" %>
   </div>
+
   <div>
     <%= form.label :email %><br>
     <%= form.email_field :email, autocomplete: "email" %>
@@ -41,11 +46,13 @@
       <%= form.label :password %><br>
       <%= form.password_field :password, autocomplete: "new-password" %>
     </div>
+    
     <div>
       <%= form.label :password_confirmation %><br>
       <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
   <% end %>
+
 <br>
   <div>
     <%= form.submit user.new_record? ? "🔒 S'inscrire" : "💾 Mettre à jour", class: "btn btn-info" %>
