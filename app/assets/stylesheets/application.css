@@ -131,20 +131,19 @@ header nav a:hover {
   font-weight: bold;
   text-shadow: 2px 2px 5px #00000050;
   margin-bottom: 2rem;
-  animation: rainbow 2s linear infinite;
+  animation: rainbow 8s linear infinite;
 }
 
 .welcome-message {
   background: linear-gradient(135deg, #4e54c8, #8f94fb);
   color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: chewy;
   border-radius: 10rem;
   border: 2px solid rgb(255, 0, 255);
   box-shadow: 0 8px 24px rgba(78, 84, 200, 0.4);
 }
 
 .subtitle {
-  font-style: italic;
   font-weight: 500;
   font-size: 1.4rem;
   letter-spacing: 0.05em;
@@ -163,7 +162,7 @@ header nav a:hover {
   font-size: 2rem;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   margin-bottom: 1rem;
-  animation: rainbow 2s linear infinite;
+  animation: rainbow 8s linear infinite;
 }
 
 .welcome-img img {
@@ -181,7 +180,7 @@ header nav a:hover {
   padding: 12px 20px;
   border-radius: 40px;
   font-weight: 600;
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: chewy;
   box-shadow: 0 6px 10px rgba(111, 206, 161, 0.514);
   max-width: fit-content;
   margin-bottom: 1.6rem;
@@ -207,7 +206,7 @@ header nav a:hover {
 }
 
 .contact-invite {
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: chewy;
   font-weight: 700;
   font-size: 2rem;
   color: #f13cbb;
@@ -224,7 +223,7 @@ header nav a:hover {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: chewy
   border: 1px solid #e0e0e0;
 }
 
