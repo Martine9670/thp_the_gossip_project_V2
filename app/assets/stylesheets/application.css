@@ -24,7 +24,7 @@ body {
 }
 
 .potin {
-  background-color: rgb(235, 172, 113);
+  background: linear-gradient(135deg, #c84ead, #8f94fb);  
   font-size: medium;
   color: rgb(65, 45, 45);
   border: 3px solid beige;
@@ -268,7 +268,7 @@ header nav a:hover {
 }
 
 .city-link {
-  color: #4e54c8;
+  color: #7e1188;
   text-decoration: underline;
   font-weight: 500;
 }

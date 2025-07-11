@@ -4,11 +4,11 @@
 
 <div class="potin mb-3">
   <p><strong>Auteur :</strong> 
-    <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
+    <%= link_to @gossip.user.first_name, user_path(@gossip.user), class: "city-link" %>
   </p>
 
   <p><strong>Ville de l'auteur :</strong> 
-    <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) if @gossip.user.city %>
+    <%= link_to @gossip.user.city.name, city_path(@gossip.user.city), class: "city-link" if @gossip.user.city %>
   </p>
 </div>
 
