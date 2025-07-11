@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<h4>Commentaires :</h4>
+<h5>Commentaires :</h5>
 
 <% if @gossip.comments.any? %>
 <% @gossip.comments.each do |comment| %>
@@ -79,7 +79,7 @@
     <p>Aucun commentaire pour l'instant...</p>
   <% end %>
 
-<h4>Ajouter un commentaire</h4>
+<h5>Ajouter un commentaire</h5>
 
 <%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
   <div>

@@ -19,6 +19,8 @@ body {
 
 .card {
   background-color: #f8bbdb;
+  border: 3px solid beige;
+  border-radius: 10px;
 }
 
 .potin {
@@ -38,10 +40,11 @@ body {
 }
 
 .potin-box {
-  border: 1px solid rgb(255, 0, 234);
+  border: 3px solid #f8bbdb;
   padding: 10px;
   margin-bottom: 10px;
   background-color: beige;
+  border-radius: 10px;
 }
 
 h2 {
