@@ -27,37 +27,41 @@
     <p><strong><u>Contenu</u> :</strong></p>
     <p><%= @gossip.content %></p>
     <p class="text-muted"><em>Créé le : <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
-    <p><strong>Likes :</strong> <%= @gossip.likes.count %></p>
 
+  <div class="d-inline-flex align-items-center">
     <% if logged_in? %>
       <% if current_user.liked?(@gossip) %>
-        <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+        <%= button_to "Unlike", gossip_like_path(@gossip, current_user.likes.find_by(likeable: @gossip)), method: :delete, class: "btn btn-danger btn-sm me-2" %>
       <% else %>
-        <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary btn-sm" %>
+        <%= button_to "Like", gossip_likes_path(@gossip), method: :post, class: "btn btn-primary btn-sm me-2" %>
       <% end %>
     <% else %>
-      <p><%= link_to "Connectez-vous pour liker", login_path %></p>
+      <%= link_to "Connectez-vous pour liker", login_path, class: "btn btn-outline-secondary btn-sm me-2" %>
     <% end %>
-    <hr>
+
+    <span class="badge bg-primary text-white" style="padding: 6px 10px; font-size: 0.9rem;">
+      ❤️ <%= @gossip.likes.count %>
+    </span>
+  </div>
+
+<hr>
 
     <div class="d-flex gap-2">
       <% if current_user == @gossip.user %>
-      <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-info btn-sm" %>
-      <%= button_to "Supprimer ce potin", gossip_path(@gossip), 
+      <%= link_to "Modifier", edit_gossip_path(@gossip), class: "btn btn-info btn-sm" %>
+      <%= button_to "Supprimer", gossip_path(@gossip), 
           method: :delete, 
           data: { turbo: false },
           onclick: "return confirm('Supprimer ce potin ?')", 
           class: "btn btn-danger btn-sm" %>
       <% end %>
-      <p1>
-        <strong>Commentaires :</strong> 
-        <span class="badge bg-primary"><%= @gossip.comments.count %></span>
-      </p1>
     </div>
   </div>
 </div>
 
-<h5>💬 Commentaires :</h5>
+<h5>💬 Commentaires :
+  <span class="badge bg-primary"><%= @gossip.comments.count %></span>
+</h5>
 
 <% if @gossip.comments.any? %>
 <% @gossip.comments.each do |comment| %>
