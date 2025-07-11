@@ -190,6 +190,29 @@ header nav a:hover {
   box-shadow: 0 0 10px #ffd700;
 }
 
+.github-logo {
+  width: 40px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.github {
+  color: beige;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.github a {
+  color: beige;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.github a:hover {
+  text-decoration: underline;
+  color: rgb(233, 115, 233);
+}
+
 .contact-mail {
   display: inline-flex;
   align-items: center;
