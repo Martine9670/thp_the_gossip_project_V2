@@ -11,8 +11,9 @@
     </p>
   </div>
 </div>
-
-  <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-potin" %>
+      <% if current_user == @user %>
+      <%= link_to "Modifier mon profil", edit_user_path(@user), class: "btn btn-potin" %>
+      <% end %>
 
   <hr>
   <h4>Ses potins :</h4>
