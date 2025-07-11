@@ -21,6 +21,16 @@ body {
   background-color: #f8bbdb;
 }
 
+.potin {
+  background-color: rgb(235, 172, 113);
+  font-size: medium;
+  color: rgb(65, 45, 45);
+  border: 2px solid white;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 20px;
+}
+
 .potin-count {
   margin-left: auto;
   font-weight: bold;
@@ -35,10 +45,15 @@ body {
 }
 
 h2 {
-  color: white;
+  background-color: #8ff7e1;
+  font-size: medium;
+  color: rgb(65, 45, 45);
   text-align: center;
   text-decoration-line: underline;
-  font-weight: bold;
+  border: 2px solid white;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 20px;
 }
 
 h3 {
@@ -118,9 +133,9 @@ header nav a:hover {
 
 @keyframes rainbow {
   0% { color: #ff0080; }
-  25% { color: #ff8c00; }
+  25% { color: black; }
   50% { color: #40e0d0; }
-  75% { color: #8a2be2; }
+  75% { color: white; }
   100% { color: #ff0080; }
 }
 
@@ -224,7 +239,6 @@ header nav a:hover {
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   overflow: hidden;
   font-family: chewy
-  border: 1px solid #e0e0e0;
 }
 
 .profile-header {
@@ -251,12 +265,12 @@ header nav a:hover {
 
 .city-link {
   color: #4e54c8;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 500;
 }
 
 .city-link:hover {
-  text-decoration: underline;
+  color:rgb(8, 241, 86);
 }
 
 
