@@ -27,7 +27,7 @@ body {
   background-color: rgb(235, 172, 113);
   font-size: medium;
   color: rgb(65, 45, 45);
-  border: 2px solid white;
+  border: 3px solid beige;
   padding: 10px;
   display: inline-block;
   border-radius: 20px;
@@ -47,16 +47,16 @@ body {
   border-radius: 10px;
 }
 
-h2 {
+.title2 {
   background-color: #8ff7e1;
   font-size: medium;
-  color: rgb(65, 45, 45);
+  color: rgb(61, 51, 51);
   text-align: center;
-  text-decoration-line: underline;
-  border: 2px solid white;
-  padding: 10px;
-  display: inline-block;
+  border: 3px solid beige;
+  padding: 15px;
   border-radius: 20px;
+  width: fit-content;
+  margin: 20px auto;
 }
 
 h3 {
@@ -65,7 +65,8 @@ h3 {
   text-align: center;
 }
 
-h4 { text-decoration-line: underline;
+h4 { 
+  text-decoration-line: underline;
 }
 
 header {

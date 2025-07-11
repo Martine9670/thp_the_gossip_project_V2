@@ -1,6 +1,8 @@
-<h2><%= @gossip.title %></h2>
-<br>
-<div class="potin">
+<div class="title2 mb-3">
+  <h5><%= @gossip.title %></h5>
+</div>
+
+<div class="potin mb-3">
   <p><strong>Auteur :</strong> 
     <%= link_to @gossip.user.first_name, user_path(@gossip.user) %>
   </p>
@@ -10,17 +12,18 @@
   </p>
 </div>
 
-<% if @gossip.tags.any? %>
-  <p><strong>Tags associés :</strong></p>
-  <div class="mb-3">
-    <% @gossip.tags.each do |tag| %>
-      <%= link_to tag.title, tag_path(tag), class: "badge bg-info text-dark me-1 text-decoration-none" %>
-    <% end %>
-  </div>
-<% end %>
 
 <div class="card mb-3">
   <div class="card-body ps-3">
+    <% if @gossip.tags.any? %>
+      <p><strong>Tags associés :</strong></p>
+      <div class="mb-3">
+        <% @gossip.tags.each do |tag| %>
+          <%= link_to tag.title, tag_path(tag), class: "badge bg-info text-dark me-1 text-decoration-none" %>
+        <% end %>
+      </div>
+    <% end %>
+
     <p><strong><u>Contenu</u> :</strong></p>
     <p><%= @gossip.content %></p>
     <p class="text-muted"><em>Créé le : <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></em></p>
@@ -54,7 +57,7 @@
   </div>
 </div>
 
-<h5>Commentaires :</h5>
+<h5>💬 Commentaires :</h5>
 
 <% if @gossip.comments.any? %>
 <% @gossip.comments.each do |comment| %>
@@ -79,15 +82,15 @@
     <p>Aucun commentaire pour l'instant...</p>
   <% end %>
 
-<h5>Ajouter un commentaire</h5>
+<h5>📝 Ajouter un commentaire :</h5>
 
 <%= form_with(model: [@gossip, Comment.new], local: true) do |form| %>
   <div>
-    <%= form.text_area :content, placeholder: "Votre commentaire ici...", rows: 3 %>
+    <%= form.text_area :content, placeholder: "Votre commentaire ici...", rows: 2 %>
   </div>
   <div>
     <%= form.submit "Envoyer", class: "btn btn-primary" %>
-    </div>
+  </div>
 <% end %>
 
 <hr>
