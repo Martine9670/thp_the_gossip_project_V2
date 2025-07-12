@@ -54,9 +54,9 @@ class User < ApplicationRecord
     return if birthdate.blank?
 
     if birthdate > Date.today
-      errors.add(:birthdate, "ne peut pas être dans le futur")
+      errors.add(:birthdate, ": Date renseignée ne peut pas être dans le futur")
     elsif birthdate < 120.years.ago
-      errors.add(:birthdate, "est trop ancienne pour être valide")
+      errors.add(:birthdate, ": Date renseignée trop ancienne pour être valide")
     end
   end
 end
