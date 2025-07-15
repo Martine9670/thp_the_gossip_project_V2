@@ -41,7 +41,7 @@
             <%= link_to 'Mon Compte', user_path(current_user), class: 'btn btn-info btn-sm' %> 
 
             <span class="text-white me-3"><br>Bonjour <%= current_user.first_name %> !</span>
-            <%= button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-potin btn-sm" %>
+            <%= button_to "Déconnexion", session_path, method: :delete, class: "btn btn-potin btn-sm" %>
           <% else %>
             <%= link_to "Connexion", login_path, class: "btn btn-info btn-sm me-3" %>
             <%= link_to "Inscription", new_user_path, class: "btn btn-potin btn-sm me-3" %>

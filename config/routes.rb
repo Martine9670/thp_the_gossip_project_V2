@@ -1,50 +1,35 @@
 Rails.application.routes.draw do
+  # Sessions (login/logout)
+  resource :session, only: [:new, :create, :destroy], path_names: { new: 'login' }
 
-get '/login',  to: 'sessions#new'
-post '/login', to: 'sessions#create'
-delete '/logout', to: 'sessions#destroy'
-
-  # Définit la route racine du site ("/") qui pointe vers l'action 'home' du contrôleur StaticPages
+  # Racine du site
   root to: 'static_pages#home'
 
-  resources :gossips
-
+  # Gossips avec commentaires et likes imbriqués
   resources :gossips do
     resources :comments, only: [:new, :create, :edit, :update, :destroy] do
       resources :likes, only: [:create, :destroy]
     end
-
     resources :likes, only: [:create, :destroy]
   end
 
+  # Autres ressources
   resources :users
-
   resources :cities, only: [:show]
-
   resources :tags, only: [:show]
 
+  # Messages privés
   resources :messages, only: [:index, :new, :create, :show, :destroy] do
     collection do
-      get 'sent'
+      get :sent
     end
   end
 
+  # Pages statiques
+  get '/team',    to: 'static_pages#team',    as: :team
+  get '/contact', to: 'static_pages#contact', as: :contact
+  get 'welcome(/:first_name)', to: 'static_pages#welcome', as: :welcome
 
-  # Route système de Rails pour vérifier l’état de santé de l’application (utile pour le déploiement)
-  # Accessible via GET /up
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Route personnalisée pour la page de l’équipe : GET /team => static_pages#team
-  get '/team', to: 'static_pages#team'
-
-  # Route personnalisée pour la page de contact : GET /contact => static_pages#contact
-  get '/contact', to: 'static_pages#contact'
-
-  # Route dynamique pour afficher une page de bienvenue personnalisée avec le prénom passé dans l’URL
-  # Exemple : /welcome/Julie => static_pages#welcome avec params[:first_name] = "Julie"
-  # La route est nommée : 'welcome' (utilisable via welcome_path("Julie"))
-  get 'welcome/:first_name', to: 'static_pages#welcome', as: 'welcome'
-
-  get 'welcome', to: 'static_pages#welcome'
+  # Health check
+  get "up", to: "rails/health#show", as: :rails_health_check
 end
-
