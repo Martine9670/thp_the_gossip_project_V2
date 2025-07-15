@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      redirect_to login_path, alert: "Vous devez être connecté pour accéder à cette page."
+      redirect_to new_session_path, alert: "Vous devez être connecté pour accéder à cette page."
     end
   end
 

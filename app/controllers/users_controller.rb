@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def require_login
     unless logged_in?
       flash[:alert] = "Vous devez être connecté pour modifier votre profil."
-      redirect_to login_path
+      redirect_to new_session_path
     end
   end
 end
