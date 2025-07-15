@@ -31,8 +31,8 @@ end
     description: Faker::Lorem.paragraph,
     # Email unique aléatoire
     email: Faker::Internet.unique.email,
-    # Age aléatoire entre 18 et 65 ans
-    age: rand(18..65),
+    # Age aléatoire entre 18 et 120 ans
+     birthdate: Faker::Date.birthday(min_age: 18, max_age: 120),
     # Associe l’utilisateur à une ville choisie au hasard parmi toutes les villes créées
     city: City.all.sample,
     # mot de passe par défaut pour tous les users
