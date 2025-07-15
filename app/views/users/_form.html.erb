@@ -1,68 +1,71 @@
-<%= form_with model: user, local: true do |form| %>
-  <% if user.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(user.errors.count, "erreur") %> Échec de la sauvegarde:</h4>
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container d-flex justify-content-center">
+  <div class="w-100" style="max-width: 400px;">
+    <%= form_with model: user, local: true do |form| %>
+      <% if user.errors.any? %>
+        <div class="alert alert-danger card mb-4 p-3">
+          <h4><%= pluralize(user.errors.count, "erreur") %> Échec de la sauvegarde :</h4>
+          <ul>
+            <% user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: "form-control", autocomplete: "given-name" %>
+      </div>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: "form-control", autocomplete: "family-name" %>
+      </div>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :description %>
+        <%= form.text_area :description, rows: 4, class: "form-control", placeholder: "Présente-toi en quelques mots..." %>
+      </div>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :birthdate, "Date de naissance" %>
+        <div class="compact-date-select mt-2">
+        <%= form.date_select :birthdate, order: [:day, :month, :year], start_year: Date.today.year - 120, end_year: Date.today.year, prompt: { day: 'Jour', month: 'Mois', year: 'Année' } %>
+        </div>
+      </div>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :city_id, "Ville" %>
+        <%= form.collection_select :city_id, City.all, :id, :name, prompt: "Choisissez une ville", class: "form-control", autocomplete: "address-level2" %>
+      </div>
+
+      <div class="card p-2 mb-3">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: "form-control", autocomplete: "email" %>
+      </div>
+
+      <% if user.new_record? %>
+        <div class="card p-2 mb-3">
+          <%= form.label :password %>
+          <%= form.password_field :password, class: "form-control", autocomplete: "new-password" %>
+        </div>
+
+        <div class="card p-2 mb-3">
+          <%= form.label :password_confirmation %>
+          <%= form.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+        </div>
+      <% end %>
+
+      <div class="mt-4">
+        <%= form.submit user.new_record? ? "🔒 S'inscrire" : "💾 Mettre à jour", class: "btn btn-info" %>
+
+        <% if user.persisted? %>
+          <%= link_to "Retour au profil", user_path(user), class: "btn btn-secondary ml-2" %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name, autocomplete: "given-name" %>
+    <hr>
+    <%= link_to "← Retour à l'accueil", root_path, class: "btn btn-link" %>
   </div>
-
-  <div>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name, autocomplete: "family-name" %>
-  </div>
-
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, rows: 4, placeholder: "Présente-toi en quelques mots..." %>
-  </div>
-
-  <div>
-    <%= form.label :birthdate, "Date de naissance" %><br>
-    <%= form.date_select :birthdate, order: [:day, :month, :year], start_year: Date.today.year - 120, end_year: Date.today.year, prompt: { day: 'Jour', month: 'Mois', year: 'Année' } %>
-  </div>
-
-  <div>
-    <%= form.label :city_id, "Ville" %><br>
-    <%= form.collection_select :city_id, City.all, :id, :name, prompt: "Choisissez une ville", autocomplete: "address-level2" %>
-  </div>
-
-  <div>
-    <%= form.label :email %><br>
-    <%= form.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <%# Affiche les champs mot de passe uniquement si l’utilisateur n’existe pas (création) %>
-  <% if user.new_record? %>
-    <div>
-      <%= form.label :password %><br>
-      <%= form.password_field :password, autocomplete: "new-password" %>
-    </div>
-    
-    <div>
-      <%= form.label :password_confirmation %><br>
-      <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-  <% end %>
-
-<br>
-  <div>
-    <%= form.submit user.new_record? ? "🔒 S'inscrire" : "💾 Mettre à jour", class: "btn btn-info" %>
-    
-    <% if user.persisted? %>
-        <%= link_to "Retour au profil", user_path(user), class: "btn btn-potin" %>
-      <% end %>  </div>
-  <hr>
-<% end %>
-
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
-
+</div>

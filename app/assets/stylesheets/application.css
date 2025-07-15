@@ -300,6 +300,13 @@ header nav a:hover {
   color:rgb(8, 241, 86);
 }
 
+.compact-date-select select {
+  max-width: 100px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+
 
 
 
