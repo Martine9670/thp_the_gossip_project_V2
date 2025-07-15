@@ -10,14 +10,14 @@ User.destroy_all
 City.destroy_all
 
 
-# Créer 10 villes
-10.times do
-  City.create!(
-    # Crée une ville avec un nom aléatoire
-    name: Faker::Address.city,
-    # Crée un code postal aléatoire
-    zip_code: Faker::Address.zip_code
-  )
+# Créer villes
+french_cities = ["Paris", "Lyon", "Marseille", "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lille"]
+french_cities.each do |city_name|
+  City.find_or_create_by!(
+    name: city_name
+  ) do |city|
+    city.zip_code = Faker::Address.zip_code.gsub(/\D/, '')[0,5]
+  end
 end
 
 # Créer 10 utilisateurs liés à une ville
@@ -32,7 +32,7 @@ end
     # Email unique aléatoire
     email: Faker::Internet.unique.email,
     # Age aléatoire entre 18 et 120 ans
-     birthdate: Faker::Date.birthday(min_age: 18, max_age: 120),
+    birthdate: Faker::Date.birthday(min_age: 18, max_age: 120),
     # Associe l’utilisateur à une ville choisie au hasard parmi toutes les villes créées
     city: City.all.sample,
     # mot de passe par défaut pour tous les users
