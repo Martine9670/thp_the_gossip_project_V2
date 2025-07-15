@@ -1,7 +1,7 @@
 <h4>Connexion</h4>
 <br>
 
-<%= form_with url: login_path, method: :post, local: true do %>
+<%= form_with url: session_path, method: :post, local: true do %>
   <div>
     <%= label_tag :email %><br>
     <%= text_field_tag :email, nil, required: true %>
