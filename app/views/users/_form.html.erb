@@ -60,7 +60,7 @@
         <%= form.submit user.new_record? ? "🔒 S'inscrire" : "💾 Mettre à jour", class: "btn btn-info" %>
 
         <% if user.persisted? %>
-          <%= link_to "Retour au profil", user_path(user), class: "btn btn-secondary ml-2" %>
+          <%= link_to "Retour au profil", user_path(user), class: "btn btn-potin" %>
         <% end %>
       </div>
     <% end %>
