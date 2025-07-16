@@ -21,8 +21,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Inscription confirmée ! 🎉 Tu peux maintenant te connecter !"
-      redirect_to @user
+    session[:user_id] = @user.id  # ← connexion automatique
+    flash[:success] = "Inscription confirmée ! 🎉 Tu es maintenant connecté !"      
+    redirect_to @user
     else
       Rails.logger.info(@user.errors.full_messages)
       render :new, status: :unprocessable_entity

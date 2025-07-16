@@ -32,6 +32,7 @@ module SessionsHelper
 
   # Oublie l'utilisateur persistant
   def forget(user)
+    return unless user # Quitte si user nil
     user.update(remember_digest: nil)    
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
@@ -39,7 +40,8 @@ module SessionsHelper
 
   # Déconnecte l'utilisateur
   def log_out(user)
-    session.delete(:user_id)
     forget(user)
+    session.delete(:user_id)
+    @current_user = nil  # optionnel, pour bien vider le cache
   end
 end
