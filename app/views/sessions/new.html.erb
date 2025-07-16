@@ -2,19 +2,18 @@
 <br>
 <div class="container d-flex justify-content-center">
   <div class="w-100" style="max-width: 400px;">
-
     <%= form_with url: session_path, method: :post, local: true do %>
-    <div class="card p-2 mb-3">
-      <%= label_tag :email %><br>
-      <%= text_field_tag :email, nil, required: true %>
-    </div>
+      <div class="card p-2 mb-3">
+        <%= label_tag :email %><br>
+        <%= text_field_tag :email, nil, required: true %>
+      </div>
 
-    <div class="card p-2 mb-3">
-      <%= label_tag :password %><br>
-      <%= password_field_tag :password, nil, required: true, minlength: 8, placeholder: "Minimum 8 caractères" %>
-    </div>
+      <div class="card p-2 mb-3">
+        <%= label_tag :password %><br>
+        <%= password_field_tag :password, nil, required: true, minlength: 8, placeholder: "Minimum 8 caractères" %>
+      </div>
+
+      <%= submit_tag "Se connecter", class: "btn btn-info w-100" %>
+    <% end %>
   </div>
 </div>
-  <br>
-  <%= submit_tag "Se connecter", class: "btn btn-info" %>
-<% end %>
