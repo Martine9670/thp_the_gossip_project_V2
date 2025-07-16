@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(password)
       session[:user_id] = user.id
+      remember(user)
       redirect_to root_path, notice: "Connecté !"
     else
       flash.now[:alert] = "Email ou mot de passe invalide"
@@ -22,6 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    log_out(current_user)
     redirect_to root_path, notice: "Vous êtes Déconnecté !"
   end
 end

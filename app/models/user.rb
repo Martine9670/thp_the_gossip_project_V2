@@ -48,6 +48,21 @@ class User < ApplicationRecord
     age
   end
 
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
+  end
+
+  def authenticated?(attribute, token)
+    digest = self.send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def forget
+    update(remember_digest: nil)
+  end
+
   private
 
   def birthdate_must_be_valid

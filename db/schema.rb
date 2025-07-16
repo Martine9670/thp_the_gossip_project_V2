@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_11_184815) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_16_064755) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "zip_code"
@@ -89,6 +89,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_184815) do
     t.bigint "city_id"
     t.string "password_digest"
     t.date "birthdate"
+    t.string "remember_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 
