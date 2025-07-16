@@ -53,12 +53,11 @@ end
   )
 end
 
-# Créer 10 tags
+# Crée 10 tags avec un titre aléatoire unique
 10.times do
-    Tag.create!(
-      # Titre aléatoire unique pour chaque tag
-        title: Faker::Lorem.unique.word
-    )
+  Tag.create!(
+    title: Faker::Lorem.unique.word.capitalize
+  )
 end
 # Crée des tags spécifiques s'ils n'existent pas déjà
   tags = ["Amour", "Animaux", "Travail", "Politique", "Sport", "People", "Cuisine", "Tech", "Voyage", "Cinéma", "Musique", "Santé"]

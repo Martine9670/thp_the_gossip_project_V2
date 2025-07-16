@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, only: [:edit, :update]
+  before_action :require_login, only: [:index, :show, :edit, :update]
 
 
   # Liste des utilisateurs
