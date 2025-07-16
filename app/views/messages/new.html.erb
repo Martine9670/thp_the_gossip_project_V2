@@ -1,26 +1,37 @@
-<h4>Nouveau message</h4>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Nouveau message</h4>
 
-    <%= form_with model: @message, url: messages_path do |f| %>
-    <div class="mb-3">
-        <%= f.label :content, "Message" %>
-        <%= f.text_area :content, class: "form-control", rows: 4 %>
-    </div>
-
-    <div class="card mb-3 p-3">
-    <label class="form-label fw-bold">Destinataires</label>
-    <div class="row">
-        <% @users.each do |user| %>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="form-check">
-            <%= check_box_tag "message[user_ids][]", user.id, false, class: "form-check-input", id: "user_#{user.id}" %>
-            <%= label_tag "user_#{user.id}", "#{user.first_name} #{user.last_name}", class: "form-check-label" %>
+          <%= form_with model: @message, url: messages_path, local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :content, "Message" %>
+              <%= f.text_area :content, class: "form-control", rows: 4 %>
             </div>
-        </div>
-        <% end %>
-    </div>
-    </div>
 
-  <%= f.submit "Envoyer", class: "btn btn-info" %>
-  <%= link_to "Annuler", messages_path, class: "btn btn-danger ms-2" %>
-<% end %>
+            <div class="card mb-3 p-3">
+              <label class="form-label fw-bold">Destinataires</label>
+              <div class="row">
+                <% @users.each do |user| %>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <div class="form-check">
+                      <%= check_box_tag "message[user_ids][]", user.id, false, class: "form-check-input", id: "user_#{user.id}" %>
+                      <%= label_tag "user_#{user.id}", "#{user.first_name} #{user.last_name}", class: "form-check-label" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
 
+            <div class="d-flex justify-content-center">
+              <%= f.submit "Envoyer", class: "btn btn-info" %>
+              <%= link_to "Annuler", messages_path, class: "btn btn-danger ms-2" %>
+            </div>
+          <% end %>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+</div> <!-- .container -->

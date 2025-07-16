@@ -1,23 +1,32 @@
-<h4>Potins de la ville de : <%= @city.name %></h4>
-<br>
-<div class="row g-4">
-  <% @city.users.each do |user| %>
-    <% user.gossips.each do |gossip| %>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h6 class="card-title">
-              <%= link_to gossip.title, gossip_path(gossip), class: "text-decoration-underline text-dark" %>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">par <%= user.first_name %></h6>
-            <p class="card-text text-secondary">📍 <%= @city.name %></p>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Potins de la ville de : <%= @city.name %></h4>
+
+          <div class="row g-4">
+            <% @city.users.each do |user| %>
+              <% user.gossips.each do |gossip| %>
+                <div class="col-md-6 col-lg-4">
+                  <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                      <h6 class="card-title">
+                        <%= link_to gossip.title, gossip_path(gossip), class: "text-decoration-underline text-dark" %>
+                      </h6>
+                      <h6 class="card-subtitle mb-2 text-muted">par <%= user.first_name %></h6>
+                      <p class="card-text text-secondary">📍 <%= @city.name %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-<br>
-<hr>
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
+
+          <hr>
+          <%= link_to "Retour à l'accueil", root_path, class: "return-link d-block text-center mt-3" %>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+</div> <!-- .container -->

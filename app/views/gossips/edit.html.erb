@@ -1,35 +1,42 @@
-<h4>Modifier le potin</h4>
-<br>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Modifier le potin</h4>
 
-<%= form_with model: @gossip, local: true, html: { class: "needs-validation" } do |form| %>
-  <% if @gossip.errors.any? %>
-    <div class="alert alert-danger">
-      <h5><%= pluralize(@gossip.errors.count, "erreur") %> la sauvegarde a échouée :</h5>
-      <ul class="mb-0">
-        <% @gossip.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <%= form_with model: @gossip, local: true, html: { class: "needs-validation" } do |form| %>
+            <% if @gossip.errors.any? %>
+              <div class="alert alert-danger">
+                <h5><%= pluralize(@gossip.errors.count, "erreur") %> la sauvegarde a échouée :</h5>
+                <ul class="mb-0">
+                  <% @gossip.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-  <div class="mb-3">
-    <%= form.label :title, class: "form-label fw-bold" %>
-    <%= form.text_field :title, class: "form-control", placeholder: "Titre du potin" %>
-  </div>
+            <div class="mb-3">
+              <%= form.label :title, "Titre", class: "form-label fw-bold" %>
+              <%= form.text_field :title, class: "form-control", placeholder: "Titre du potin" %>
+            </div>
 
-  <div class="mb-3">
-    <%= form.label :content, class: "form-label fw-bold" %>
-    <%= form.text_area :content, class: "form-control", rows: 5, placeholder: "Contenu du potin" %>
-  </div>  
-  <br>
+            <div class="mb-3">
+              <%= form.label :content, "Contenu", class: "form-label fw-bold" %>
+              <%= form.text_area :content, class: "form-control", rows: 5, placeholder: "Contenu du potin" %>
+            </div>
 
-  <div>
-    <%= form.submit "💾 Mettre à jour", class: "btn btn-info" %>
-  </div>
-<% end %>
+          <hr>
+            <div class="d-grid">
+              <%= form.submit "💾 Mettre à jour", class: "btn btn-info" %>
+            </div>
+          <% end %>
+          <hr>
 
-<hr>
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
-
+          <%= link_to "Retour à l'accueil", root_path, class: "return-link d-block text-center mt-3" %>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+</div> <!-- .container -->

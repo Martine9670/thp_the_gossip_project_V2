@@ -1,3 +1,14 @@
-<h1>Modifier mon profil</h1>
-
-<%= render 'form', user: @user %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Modifier mon profil</h4>
+          
+          <%= render 'form', user: @user %>
+          
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+</div> <!-- .container -->

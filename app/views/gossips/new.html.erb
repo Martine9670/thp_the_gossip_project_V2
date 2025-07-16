@@ -1,61 +1,33 @@
-<h4>Créer un nouveau potin</h4>
-<br>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-4 text-center">Créer un nouveau potin</h4>
 
-<%= form_with model: @gossip, local: true do |f| %>
-  <div class="mb-3">
-    <%= f.label :title, "Titre" %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
+          <%= form_with model: @gossip, local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :title, "Titre", class: "form-label fw-bold" %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
 
-  <div class="mb-3">
-    <%= f.label :content, "Contenu" %>
-    <%= f.text_area :content, class: "form-control" %>
-  </div>
+            <div class="mb-3">
+              <%= f.label :content, "Contenu", class: "form-label fw-bold" %>
+              <%= f.text_area :content, class: "form-control", rows: 5 %>
+            </div>
 
-  <div>
-   <%= f.label :tag_ids do %>
-      <strong class="tag-label">Choix du tag</strong>
-   <% end %><br>
-   <%= f.collection_select :tag_ids, Tag.all, :id, :title, { multiple: true }, class: "form-select w-25", size: 5 %>
-  </div>
-  <br>
+            <div class="mb-3">
+              <%= f.label :tag_ids, "Choix du tag", class: "form-label fw-semibold mb-2" %>
+              <%= f.collection_select :tag_ids, Tag.all, :id, :title, { multiple: true }, class: "form-select w-50", size: 5 %>
+            </div>
+         <hr>
+            <%= f.submit "✏️ Créer", class: "btn btn-info w-100" %>
+          <% end %>
+         <hr>
 
-   <%= f.submit "✏️ Créer", class: "btn btn-info" %>
-<% end %>
-<br>
-
-<hr>
-  <%= link_to "Retour à l'accueil", root_path, class: "return-link" %>
-<hr>
-
-<!--
-EXPLICATIONS :
-
-1. form_with model: @gossip, local: true
-   - Crée un formulaire lié à l'objet @gossip.
-   - local: true désactive l'envoi AJAX, le formulaire utilise une requête HTTP normale.
-
-2. f.label :title, "Titre"
-   - Génère une étiquette pour le champ "title" avec le texte "Titre".
-
-3. f.text_field :title, class: "form-control"
-   - Champ texte simple pour saisir le titre, stylé avec Bootstrap.
-
-4. f.label :content, "Contenu"
-   - Étiquette pour le champ "content" avec le texte "Contenu".
-
-5. f.text_area :content, class: "form-control"
-   - Zone de texte plus grande pour saisir le contenu, stylée avec Bootstrap.
-
-6. f.label :user_id, "Auteur"
-   - Étiquette pour le champ "user_id" avec le texte "Auteur".
-
-7. f.collection_select :user_id, User.all, :id, :first_name, class: "form-select"
-   - Menu déroulant qui liste tous les utilisateurs.
-   - La valeur enregistrée est l'id de l'utilisateur.
-   - Le texte affiché dans la liste est le prénom (first_name).
-   - Stylé avec la classe Bootstrap "form-select".
-
-8. f.submit "Créer", class: "btn btn-success"
-   - Bouton pour soumettre le formulaire, avec style Bootstrap vert.
--->
+          <%= link_to "Retour à l'accueil", root_path, class: "return-link d-block text-center mt-3" %>
+        </div> <!-- .card-body -->
+      </div> <!-- .card -->
+    </div> <!-- .col -->
+  </div> <!-- .row -->
+</div> <!-- .container -->
