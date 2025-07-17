@@ -1,26 +1,35 @@
 module SessionsHelper
-  # Connecte l'utilisateur
+  # Connecte l'utilisateur en créant un cookie persistant
   def log_in(user)
-    session[:user_id] = user.id
-  end
-
-  # "Se souvenir de moi" : stocke des cookies persistants
-  def remember(user)
     remember_token = SecureRandom.urlsafe_base64
-    user.remember(remember_token) # Cette méthode doit stocker le digest en base
-    cookies.permanent[:user_id] = user.id
-    cookies.permanent[:remember_token] = remember_token
+    user.update(remember_digest: digest(remember_token))
+
+    cookies.encrypted[:user_id] = {
+      value: user.id,
+      expires: 2.weeks.from_now,
+      httponly: true,
+      secure: Rails.env.production?
+    }
+
+    cookies.encrypted[:remember_token] = {
+      value: remember_token,
+      expires: 2.weeks.from_now,
+      httponly: true,
+      secure: Rails.env.production?
+    }
   end
 
-  # Renvoie l'utilisateur actuellement connecté (ou nil)
+  # Renvoie l'utilisateur connecté ou nil
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id])
-    elsif cookies[:user_id]
-      user = User.find_by(id: cookies[:user_id])
-      if user && user.authenticated?(:remember, cookies[:remember_token])
-        log_in(user)
-        @current_user = user
+    @current_user ||= begin
+      user_id = cookies.encrypted[:user_id]
+      token = cookies.encrypted[:remember_token]
+      user = User.find_by(id: user_id)
+
+      if user && user.authenticated?(:remember, token)
+        user
+      else
+        nil
       end
     end
   end
@@ -30,18 +39,23 @@ module SessionsHelper
     current_user.present?
   end
 
-  # Oublie l'utilisateur persistant
+  # Oublie l'utilisateur (supprime le cookie et le token en base)
   def forget(user)
-    return unless user # Quitte si user nil
-    user.update(remember_digest: nil)    
+    user.update(remember_digest: nil)
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
 
-  # Déconnecte l'utilisateur
+  # Déconnecte complètement
   def log_out(user)
     forget(user)
-    session.delete(:user_id)
-    @current_user = nil  # optionnel, pour bien vider le cache
+    @current_user = nil
+  end
+
+  private
+
+  def digest(token)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(token, cost: cost)
   end
 end
